@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第14章 講義ノートの図 | データ分析（基礎）R分析資料</title>
+  <meta name="description" content="KGsoc2020秋データ分析（基礎）のためのR分析資料" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第14章 講義ノートの図 | データ分析（基礎）R分析資料" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="KGsoc2020秋データ分析（基礎）のためのR分析資料" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第14章 講義ノートの図 | データ分析（基礎）R分析資料" />
+  
+  <meta name="twitter:description" content="KGsoc2020秋データ分析（基礎）のためのR分析資料" />
+  
+
+
+
+<meta name="date" content="2020-09-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="回帰分析における推定と検定.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="index.html">Basic Data Analysis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> イントロダクション</a></li>
+<li class="chapter" data-level="2" data-path="記述統計学のおさらい.html"><a href="記述統計学のおさらい.html"><i class="fa fa-check"></i><b>2</b> 記述統計学のおさらい</a><ul>
+<li class="chapter" data-level="2.1" data-path="記述統計学のおさらい.html"><a href="記述統計学のおさらい.html#平均分散標準偏差"><i class="fa fa-check"></i><b>2.1</b> 平均，分散，標準偏差</a></li>
+<li class="chapter" data-level="2.2" data-path="記述統計学のおさらい.html"><a href="記述統計学のおさらい.html#標準得点"><i class="fa fa-check"></i><b>2.2</b> 標準得点</a></li>
+<li class="chapter" data-level="2.3" data-path="記述統計学のおさらい.html"><a href="記述統計学のおさらい.html#共分散と相関係数"><i class="fa fa-check"></i><b>2.3</b> 共分散と相関係数</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="推測統計学の考え方.html"><a href="推測統計学の考え方.html"><i class="fa fa-check"></i><b>3</b> 推測統計学の考え方</a><ul>
+<li class="chapter" data-level="3.1" data-path="推測統計学の考え方.html"><a href="推測統計学の考え方.html#データ"><i class="fa fa-check"></i><b>3.1</b> データ</a></li>
+<li class="chapter" data-level="3.2" data-path="推測統計学の考え方.html"><a href="推測統計学の考え方.html#ランダムサンプリング"><i class="fa fa-check"></i><b>3.2</b> ランダム・サンプリング</a></li>
+<li class="chapter" data-level="3.3" data-path="推測統計学の考え方.html"><a href="推測統計学の考え方.html#ランダムサンプリングの繰り返し"><i class="fa fa-check"></i><b>3.3</b> ランダム・サンプリングの繰り返し</a></li>
+<li class="chapter" data-level="3.4" data-path="推測統計学の考え方.html"><a href="推測統計学の考え方.html#バイアスのあるサンプリングの場合"><i class="fa fa-check"></i><b>3.4</b> バイアスのあるサンプリングの場合</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="確率論の基礎.html"><a href="確率論の基礎.html"><i class="fa fa-check"></i><b>4</b> 確率論の基礎</a><ul>
+<li class="chapter" data-level="4.1" data-path="確率論の基礎.html"><a href="確率論の基礎.html#コインを一回投げる"><i class="fa fa-check"></i><b>4.1</b> コインを一回投げる</a></li>
+<li class="chapter" data-level="4.2" data-path="確率論の基礎.html"><a href="確率論の基礎.html#コインを二回投げる"><i class="fa fa-check"></i><b>4.2</b> コインを二回投げる</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="確率変数と確率分布.html"><a href="確率変数と確率分布.html"><i class="fa fa-check"></i><b>5</b> 確率変数と確率分布</a><ul>
+<li class="chapter" data-level="5.1" data-path="確率変数と確率分布.html"><a href="確率変数と確率分布.html#二項分布"><i class="fa fa-check"></i><b>5.1</b> 二項分布</a></li>
+<li class="chapter" data-level="5.2" data-path="確率変数と確率分布.html"><a href="確率変数と確率分布.html#二項分布のグラフ"><i class="fa fa-check"></i><b>5.2</b> 二項分布のグラフ</a></li>
+<li class="chapter" data-level="5.3" data-path="確率変数と確率分布.html"><a href="確率変数と確率分布.html#ggplot2で描く"><i class="fa fa-check"></i><b>5.3</b> ggplot2で描く</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="大数の法則と中心極限定理.html"><a href="大数の法則と中心極限定理.html"><i class="fa fa-check"></i><b>6</b> 大数の法則と中心極限定理</a><ul>
+<li class="chapter" data-level="6.1" data-path="大数の法則と中心極限定理.html"><a href="大数の法則と中心極限定理.html#一様分布からのランダムサンプリング"><i class="fa fa-check"></i><b>6.1</b> 一様分布からのランダムサンプリング</a></li>
+<li class="chapter" data-level="6.2" data-path="大数の法則と中心極限定理.html"><a href="大数の法則と中心極限定理.html#ベータ分布beta0.50.5からのランダムサンプリング"><i class="fa fa-check"></i><b>6.2</b> ベータ分布<span class="math inline">\(Beta(0.5,0.5)\)</span>からのランダムサンプリング</a></li>
+<li class="chapter" data-level="6.3" data-path="大数の法則と中心極限定理.html"><a href="大数の法則と中心極限定理.html#おまけggplotで書く"><i class="fa fa-check"></i><b>6.3</b> おまけggplotで書く</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="標本と標本分布.html"><a href="標本と標本分布.html"><i class="fa fa-check"></i><b>7</b> 標本と標本分布</a><ul>
+<li class="chapter" data-level="7.1" data-path="標本と標本分布.html"><a href="標本と標本分布.html#一様分布からのz値の標本分布"><i class="fa fa-check"></i><b>7.1</b> 一様分布からの<span class="math inline">\(z\)</span>値の標本分布</a></li>
+<li class="chapter" data-level="7.2" data-path="標本と標本分布.html"><a href="標本と標本分布.html#正規分布からのt値の標本分布"><i class="fa fa-check"></i><b>7.2</b> 正規分布からの<span class="math inline">\(t\)</span>値の標本分布</a></li>
+<li class="chapter" data-level="7.3" data-path="標本と標本分布.html"><a href="標本と標本分布.html#一様分布からのt値の標本分布"><i class="fa fa-check"></i><b>7.3</b> 一様分布からの<span class="math inline">\(t\)</span>値の標本分布</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="統計的推定1-点推定.html"><a href="統計的推定1-点推定.html"><i class="fa fa-check"></i><b>8</b> 統計的推定(1): 点推定</a><ul>
+<li class="chapter" data-level="8.1" data-path="推測統計学の考え方.html"><a href="推測統計学の考え方.html#データ"><i class="fa fa-check"></i><b>8.1</b> データ</a></li>
+<li class="chapter" data-level="8.2" data-path="統計的推定1-点推定.html"><a href="統計的推定1-点推定.html#尤度対数尤度"><i class="fa fa-check"></i><b>8.2</b> 尤度・対数尤度</a></li>
+<li class="chapter" data-level="8.3" data-path="統計的推定1-点推定.html"><a href="統計的推定1-点推定.html#推定誤差"><i class="fa fa-check"></i><b>8.3</b> 推定誤差</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="統計的推定2-区間推定.html"><a href="統計的推定2-区間推定.html"><i class="fa fa-check"></i><b>9</b> 統計的推定(2): 区間推定</a><ul>
+<li class="chapter" data-level="9.1" data-path="統計的推定2-区間推定.html"><a href="統計的推定2-区間推定.html#正規分布からのランダムサンプリング"><i class="fa fa-check"></i><b>9.1</b> 正規分布からのランダムサンプリング</a></li>
+<li class="chapter" data-level="9.2" data-path="推測統計学の考え方.html"><a href="推測統計学の考え方.html#ランダムサンプリングの繰り返し"><i class="fa fa-check"></i><b>9.2</b> ランダムサンプリングの繰り返し</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="仮説検定1-仮説検定の考え方.html"><a href="仮説検定1-仮説検定の考え方.html"><i class="fa fa-check"></i><b>10</b> 仮説検定(1): 仮説検定の考え方</a></li>
+<li class="chapter" data-level="11" data-path="仮説検定2-母平均母比率の検定.html"><a href="仮説検定2-母平均母比率の検定.html"><i class="fa fa-check"></i><b>11</b> 仮説検定(2): 母平均・母比率の検定</a><ul>
+<li class="chapter" data-level="11.1" data-path="仮説検定2-母平均母比率の検定.html"><a href="仮説検定2-母平均母比率の検定.html#母平均の検定"><i class="fa fa-check"></i><b>11.1</b> 母平均の検定</a></li>
+<li class="chapter" data-level="11.2" data-path="仮説検定2-母平均母比率の検定.html"><a href="仮説検定2-母平均母比率の検定.html#母比率の検定"><i class="fa fa-check"></i><b>11.2</b> 母比率の検定</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="仮説検定3-母平均の差母比率の差の検定.html"><a href="仮説検定3-母平均の差母比率の差の検定.html"><i class="fa fa-check"></i><b>12</b> 仮説検定(3): 母平均の差・母比率の差の検定</a><ul>
+<li class="chapter" data-level="12.1" data-path="仮説検定3-母平均の差母比率の差の検定.html"><a href="仮説検定3-母平均の差母比率の差の検定.html#母平均の差の検定t検定"><i class="fa fa-check"></i><b>12.1</b> 母平均の差の検定（t検定）</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="仮説検定3-母平均の差母比率の差の検定.html"><a href="仮説検定3-母平均の差母比率の差の検定.html#母比率の差の検定"><i class="fa fa-check"></i><b>12.1.1</b> 母比率の差の検定</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="回帰分析における推定と検定.html"><a href="回帰分析における推定と検定.html"><i class="fa fa-check"></i><b>13</b> 回帰分析における推定と検定</a><ul>
+<li class="chapter" data-level="13.1" data-path="回帰分析における推定と検定.html"><a href="回帰分析における推定と検定.html#単回帰分析"><i class="fa fa-check"></i><b>13.1</b> 単回帰分析</a></li>
+<li class="chapter" data-level="13.2" data-path="回帰分析における推定と検定.html"><a href="回帰分析における推定と検定.html#重回帰分析"><i class="fa fa-check"></i><b>13.2</b> 重回帰分析</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="講義ノートの図.html"><a href="講義ノートの図.html"><i class="fa fa-check"></i><b>14</b> 講義ノートの図</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">データ分析（基礎）R分析資料</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="講義ノートの図" class="section level1">
+<h1><span class="header-section-number">第14章</span> 講義ノートの図</h1>
+<p>おまけとして講義ノートで用いた図のコードをおいておく．要<code>tidyverse</code>．</p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="講義ノートの図.html#cb196-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
+<p>Figure 2.1</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="講義ノートの図.html#cb197-1"></a><span class="kw">tibble</span>(<span class="dt">age=</span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">18</span>,<span class="dv">43</span>),<span class="kw">rep</span>(<span class="dv">19</span>,<span class="dv">55</span>),<span class="kw">rep</span>(<span class="dv">20</span>,<span class="dv">68</span>),<span class="kw">rep</span>(<span class="dv">21</span>,<span class="dv">21</span>),<span class="kw">rep</span>(<span class="dv">22</span>,<span class="dv">9</span>),<span class="kw">rep</span>(<span class="dv">23</span>,<span class="dv">4</span>))) <span class="op">%&gt;%</span></span>
+<span id="cb197-2"><a href="講義ノートの図.html#cb197-2"></a><span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span></span>
+<span id="cb197-3"><a href="講義ノートの図.html#cb197-3"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x =</span> age),<span class="dt">binwidth =</span> <span class="dv">1</span>, <span class="dt">color =</span><span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;skyblue&quot;</span>) <span class="op">+</span></span>
+<span id="cb197-4"><a href="講義ノートの図.html#cb197-4"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks=</span><span class="dv">18</span><span class="op">:</span><span class="dv">23</span>) <span class="op">+</span></span>
+<span id="cb197-5"><a href="講義ノートの図.html#cb197-5"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-98-1.png" width="672" /></p>
+<p>Figure 2.2</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="講義ノートの図.html#cb198-1"></a><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="fl">152.8</span>,<span class="fl">150.1</span>,<span class="dv">182</span>,<span class="fl">163.2</span>,<span class="fl">167.3</span>,<span class="fl">160.2</span>,<span class="fl">164.9</span>,<span class="fl">161.4</span>,<span class="fl">179.9</span>,<span class="fl">172.2</span>),</span>
+<span id="cb198-2"><a href="講義ノートの図.html#cb198-2"></a>       <span class="dt">y =</span> <span class="kw">c</span>(<span class="fl">56.3</span>,<span class="fl">52.1</span>,<span class="fl">85.6</span>,<span class="fl">66.8</span>,<span class="fl">74.2</span>,<span class="fl">58.1</span>,<span class="fl">61.9</span>,<span class="fl">55.1</span>,<span class="fl">70.5</span>,<span class="fl">64.1</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb198-3"><a href="講義ノートの図.html#cb198-3"></a><span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span></span>
+<span id="cb198-4"><a href="講義ノートの図.html#cb198-4"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span></span>
+<span id="cb198-5"><a href="講義ノートの図.html#cb198-5"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
+<p>Figure 5.1</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="講義ノートの図.html#cb199-1"></a><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>,</span>
+<span id="cb199-2"><a href="講義ノートの図.html#cb199-2"></a>       <span class="dt">y =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">6</span>,<span class="dv">6</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb199-3"><a href="講義ノートの図.html#cb199-3"></a><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x=</span>x)) <span class="op">+</span></span>
+<span id="cb199-4"><a href="講義ノートの図.html#cb199-4"></a><span class="st">  </span><span class="kw">geom_linerange</span>(<span class="kw">aes</span>(<span class="dt">ymax=</span>y), <span class="dt">ymin=</span><span class="dv">0</span>, <span class="dt">color=</span><span class="st">&quot;grey50&quot;</span>) <span class="op">+</span></span>
+<span id="cb199-5"><a href="講義ノートの図.html#cb199-5"></a><span class="st">  </span><span class="kw">geom_point</span>( <span class="kw">aes</span>(<span class="dt">y=</span>y) ) <span class="op">+</span></span>
+<span id="cb199-6"><a href="講義ノートの図.html#cb199-6"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks=</span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span>) <span class="op">+</span></span>
+<span id="cb199-7"><a href="講義ノートの図.html#cb199-7"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;f(x)&quot;</span>) <span class="op">+</span></span>
+<span id="cb199-8"><a href="講義ノートの図.html#cb199-8"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-100-1.png" width="672" /></p>
+<p>Figure 5.2</p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="講義ノートの図.html#cb200-1"></a><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="dv">2</span><span class="op">:</span><span class="dv">12</span>,</span>
+<span id="cb200-2"><a href="講義ノートの図.html#cb200-2"></a>       <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>,<span class="dv">5</span><span class="op">:</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">36</span> ) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb200-3"><a href="講義ノートの図.html#cb200-3"></a><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x=</span>x)) <span class="op">+</span></span>
+<span id="cb200-4"><a href="講義ノートの図.html#cb200-4"></a><span class="st">  </span><span class="kw">geom_linerange</span>(<span class="kw">aes</span>(<span class="dt">ymax=</span>y), <span class="dt">ymin=</span><span class="dv">0</span>, <span class="dt">color=</span><span class="st">&quot;grey50&quot;</span>) <span class="op">+</span></span>
+<span id="cb200-5"><a href="講義ノートの図.html#cb200-5"></a><span class="st">  </span><span class="kw">geom_point</span>( <span class="kw">aes</span>(<span class="dt">y=</span>y) ) <span class="op">+</span></span>
+<span id="cb200-6"><a href="講義ノートの図.html#cb200-6"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks=</span><span class="dv">2</span><span class="op">:</span><span class="dv">12</span>) <span class="op">+</span></span>
+<span id="cb200-7"><a href="講義ノートの図.html#cb200-7"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;f(x)&quot;</span>) <span class="op">+</span></span>
+<span id="cb200-8"><a href="講義ノートの図.html#cb200-8"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-101-1.png" width="672" />
+Figure 5.3</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="講義ノートの図.html#cb201-1"></a><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="op">-</span><span class="fl">3.5</span>, <span class="fl">3.5</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb201-2"><a href="講義ノートの図.html#cb201-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x)) <span class="op">+</span></span>
+<span id="cb201-3"><a href="講義ノートの図.html#cb201-3"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, </span>
+<span id="cb201-4"><a href="講義ノートの図.html#cb201-4"></a>                <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="dv">0</span>,<span class="dt">sd =</span> <span class="dv">1</span>), <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb201-5"><a href="講義ノートの図.html#cb201-5"></a><span class="st">  </span><span class="kw">geom_area</span>(<span class="dt">stat =</span> <span class="st">&#39;function&#39;</span>,</span>
+<span id="cb201-6"><a href="講義ノートの図.html#cb201-6"></a>            <span class="dt">fun =</span> dnorm,</span>
+<span id="cb201-7"><a href="講義ノートの図.html#cb201-7"></a>            <span class="dt">fill =</span> <span class="st">&#39;grey50&#39;</span>,</span>
+<span id="cb201-8"><a href="講義ノートの図.html#cb201-8"></a>            <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="fl">0.5</span>, <span class="fl">-1.5</span>),</span>
+<span id="cb201-9"><a href="講義ノートの図.html#cb201-9"></a>            <span class="dt">alpha =</span> <span class="fl">0.3</span>) <span class="op">+</span></span>
+<span id="cb201-10"><a href="講義ノートの図.html#cb201-10"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb201-11"><a href="講義ノートの図.html#cb201-11"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="ot">NULL</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb201-12"><a href="講義ノートの図.html#cb201-12"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="ot">NULL</span>) <span class="op">+</span></span>
+<span id="cb201-13"><a href="講義ノートの図.html#cb201-13"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;segment&quot;</span>, <span class="dt">x=</span><span class="op">-</span><span class="fl">0.5</span>,<span class="dt">xend=</span><span class="op">-</span><span class="fl">0.5</span>,<span class="dt">y=</span><span class="kw">dnorm</span>(<span class="op">-</span><span class="fl">0.5</span>),<span class="dt">yend=</span><span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb201-14"><a href="講義ノートの図.html#cb201-14"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;segment&quot;</span>, <span class="dt">x=</span><span class="op">-</span><span class="fl">1.5</span>,<span class="dt">xend=</span><span class="op">-</span><span class="fl">1.5</span>,<span class="dt">y=</span><span class="kw">dnorm</span>(<span class="op">-</span><span class="fl">1.5</span>),<span class="dt">yend=</span><span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb201-15"><a href="講義ノートの図.html#cb201-15"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x=</span><span class="op">-</span><span class="fl">0.5</span>, <span class="dt">y=</span><span class="op">-</span><span class="fl">0.02</span>, <span class="dt">parse=</span><span class="ot">TRUE</span>,<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;b&quot;</span>)) <span class="op">+</span><span class="st"> </span><span class="co">#italic(b)</span></span>
+<span id="cb201-16"><a href="講義ノートの図.html#cb201-16"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x=</span><span class="op">-</span><span class="fl">1.5</span>, <span class="dt">y=</span><span class="op">-</span><span class="fl">0.02</span>, <span class="dt">parse=</span><span class="ot">TRUE</span>,<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;a&quot;</span>)) <span class="op">+</span></span>
+<span id="cb201-17"><a href="講義ノートの図.html#cb201-17"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x=</span><span class="op">-</span><span class="dv">1</span>, <span class="dt">y=</span><span class="fl">0.1</span>, <span class="dt">parse=</span><span class="ot">TRUE</span>, </span>
+<span id="cb201-18"><a href="講義ノートの図.html#cb201-18"></a>           <span class="dt">label=</span><span class="kw">paste</span>(</span>
+<span id="cb201-19"><a href="講義ノートの図.html#cb201-19"></a>               <span class="st">&quot;integral(f(x) * dx, a, b)&quot;</span>)</span>
+<span id="cb201-20"><a href="講義ノートの図.html#cb201-20"></a>           ) <span class="op">+</span></span>
+<span id="cb201-21"><a href="講義ノートの図.html#cb201-21"></a><span class="st">  </span><span class="kw">theme_void</span>()</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
+<p>Figure 5.4</p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="講義ノートの図.html#cb202-1"></a>x &lt;-<span class="st"> </span><span class="dv">0</span><span class="op">:</span><span class="dv">10</span></span>
+<span id="cb202-2"><a href="講義ノートの図.html#cb202-2"></a><span class="kw">tibble</span>(</span>
+<span id="cb202-3"><a href="講義ノートの図.html#cb202-3"></a>  <span class="dt">x =</span> x,</span>
+<span id="cb202-4"><a href="講義ノートの図.html#cb202-4"></a>  <span class="dt">p01 =</span> <span class="kw">dbinom</span>(x, <span class="kw">length</span>(x) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>, <span class="fl">0.1</span>),</span>
+<span id="cb202-5"><a href="講義ノートの図.html#cb202-5"></a>  <span class="dt">p05 =</span> <span class="kw">dbinom</span>(x, <span class="kw">length</span>(x) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>, <span class="fl">0.5</span>),</span>
+<span id="cb202-6"><a href="講義ノートの図.html#cb202-6"></a>  <span class="dt">p07 =</span> <span class="kw">dbinom</span>(x, <span class="kw">length</span>(x) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>, <span class="fl">0.7</span>)</span>
+<span id="cb202-7"><a href="講義ノートの図.html#cb202-7"></a>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb202-8"><a href="講義ノートの図.html#cb202-8"></a><span class="st">  </span><span class="kw">gather</span>(<span class="dt">key =</span> p, <span class="dt">value =</span> prob, p01, p05, p07) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb202-9"><a href="講義ノートの図.html#cb202-9"></a><span class="st">  </span><span class="kw">ggplot</span>(.,<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>prob,<span class="dt">color=</span>p, <span class="dt">shape=</span>p)) <span class="op">+</span></span>
+<span id="cb202-10"><a href="講義ノートの図.html#cb202-10"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
+<span id="cb202-11"><a href="講義ノートの図.html#cb202-11"></a><span class="st">  </span><span class="kw">geom_linerange</span>(<span class="kw">aes</span>(<span class="dt">ymax=</span>prob), <span class="dt">ymin=</span><span class="dv">0</span>, <span class="dt">alpha=</span><span class="fl">0.2</span>) <span class="op">+</span></span>
+<span id="cb202-12"><a href="講義ノートの図.html#cb202-12"></a><span class="st">  </span><span class="co"># geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;) +</span></span>
+<span id="cb202-13"><a href="講義ノートの図.html#cb202-13"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> x) <span class="op">+</span></span>
+<span id="cb202-14"><a href="講義ノートの図.html#cb202-14"></a><span class="st">  </span><span class="kw">scale_fill_hue</span>(<span class="dt">name =</span> <span class="st">&quot;p&quot;</span>,</span>
+<span id="cb202-15"><a href="講義ノートの図.html#cb202-15"></a>                 <span class="dt">labels =</span> <span class="kw">c</span>(<span class="dt">p01 =</span> <span class="st">&quot;0.1&quot;</span>,</span>
+<span id="cb202-16"><a href="講義ノートの図.html#cb202-16"></a>                            <span class="dt">p05 =</span> <span class="st">&quot;0.5&quot;</span>,</span>
+<span id="cb202-17"><a href="講義ノートの図.html#cb202-17"></a>                            <span class="dt">p07 =</span> <span class="st">&quot;0.7&quot;</span>)) <span class="op">+</span></span>
+<span id="cb202-18"><a href="講義ノートの図.html#cb202-18"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;f(x)&quot;</span>) <span class="op">+</span></span>
+<span id="cb202-19"><a href="講義ノートの図.html#cb202-19"></a><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span></span>
+<span id="cb202-20"><a href="講義ノートの図.html#cb202-20"></a><span class="st">  </span><span class="kw">theme</span>(</span>
+<span id="cb202-21"><a href="講義ノートの図.html#cb202-21"></a>    <span class="dt">legend.position =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb202-22"><a href="講義ノートの図.html#cb202-22"></a>    <span class="dt">legend.justification =</span> <span class="kw">c</span>(<span class="st">&quot;right&quot;</span>, <span class="st">&quot;top&quot;</span>),</span>
+<span id="cb202-23"><a href="講義ノートの図.html#cb202-23"></a>    <span class="dt">legend.box.just =</span> <span class="st">&quot;right&quot;</span>,</span>
+<span id="cb202-24"><a href="講義ノートの図.html#cb202-24"></a>    <span class="dt">legend.margin =</span> <span class="kw">margin</span>(<span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>)</span>
+<span id="cb202-25"><a href="講義ノートの図.html#cb202-25"></a>  )</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
+<p>Figure 6.1</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="講義ノートの図.html#cb203-1"></a><span class="kw">tibble</span>(<span class="dt">n=</span><span class="dv">1</span><span class="op">:</span><span class="dv">100</span>,</span>
+<span id="cb203-2"><a href="講義ノートの図.html#cb203-2"></a>       <span class="dt">se=</span><span class="fl">2.92</span><span class="op">/</span><span class="dv">1</span><span class="op">:</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb203-3"><a href="講義ノートの図.html#cb203-3"></a><span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span></span>
+<span id="cb203-4"><a href="講義ノートの図.html#cb203-4"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x=</span>n,<span class="dt">y=</span>se), <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb203-5"><a href="講義ノートの図.html#cb203-5"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;n&quot;</span>,<span class="dt">y=</span><span class="kw">expression</span>(sigma<span class="op">/</span>n)) <span class="op">+</span></span>
+<span id="cb203-6"><a href="講義ノートの図.html#cb203-6"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-104-1.png" width="672" /></p>
+<p>Figure 6.2</p>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="講義ノートの図.html#cb204-1"></a>biplot &lt;-<span class="st"> </span><span class="kw">tibble</span>()</span>
+<span id="cb204-2"><a href="講義ノートの図.html#cb204-2"></a>p &lt;-<span class="st"> </span><span class="fl">0.3</span></span>
+<span id="cb204-3"><a href="講義ノートの図.html#cb204-3"></a></span>
+<span id="cb204-4"><a href="講義ノートの図.html#cb204-4"></a><span class="cf">for</span> (t <span class="cf">in</span> <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">50</span>,<span class="dv">100</span>)) {</span>
+<span id="cb204-5"><a href="講義ノートの図.html#cb204-5"></a>  <span class="kw">tibble</span>(</span>
+<span id="cb204-6"><a href="講義ノートの図.html#cb204-6"></a>    <span class="dt">n=</span><span class="kw">rep</span>(t,t<span class="op">+</span><span class="dv">1</span>),</span>
+<span id="cb204-7"><a href="講義ノートの図.html#cb204-7"></a>    <span class="dt">x=</span><span class="dv">0</span><span class="op">:</span>t<span class="op">/</span>t,</span>
+<span id="cb204-8"><a href="講義ノートの図.html#cb204-8"></a>    <span class="dt">y=</span>t<span class="op">*</span><span class="kw">dbinom</span>(<span class="dv">0</span><span class="op">:</span>t,t,p)</span>
+<span id="cb204-9"><a href="講義ノートの図.html#cb204-9"></a>  ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">bind_rows</span>(biplot,.) -&gt;<span class="st"> </span>biplot</span>
+<span id="cb204-10"><a href="講義ノートの図.html#cb204-10"></a>}</span>
+<span id="cb204-11"><a href="講義ノートの図.html#cb204-11"></a></span>
+<span id="cb204-12"><a href="講義ノートの図.html#cb204-12"></a>biplot <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb204-13"><a href="講義ノートの図.html#cb204-13"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">n =</span> <span class="kw">factor</span>(n)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb204-14"><a href="講義ノートの図.html#cb204-14"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>x, <span class="dt">y=</span>y, <span class="dt">color =</span> n)) <span class="op">+</span></span>
+<span id="cb204-15"><a href="講義ノートの図.html#cb204-15"></a><span class="st">  </span><span class="kw">geom_step</span>(<span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb204-16"><a href="講義ノートの図.html#cb204-16"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;x/n&quot;</span>, <span class="dt">y=</span><span class="st">&quot;nf(x)&quot;</span>) <span class="op">+</span></span>
+<span id="cb204-17"><a href="講義ノートの図.html#cb204-17"></a><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span></span>
+<span id="cb204-18"><a href="講義ノートの図.html#cb204-18"></a><span class="st">  </span><span class="kw">theme</span>(</span>
+<span id="cb204-19"><a href="講義ノートの図.html#cb204-19"></a>    <span class="dt">legend.position =</span> <span class="kw">c</span>(<span class="fl">0.95</span>, <span class="fl">0.95</span>),</span>
+<span id="cb204-20"><a href="講義ノートの図.html#cb204-20"></a>    <span class="dt">legend.justification =</span> <span class="kw">c</span>(<span class="st">&quot;right&quot;</span>, <span class="st">&quot;top&quot;</span>),</span>
+<span id="cb204-21"><a href="講義ノートの図.html#cb204-21"></a>    <span class="dt">legend.box.just =</span> <span class="st">&quot;right&quot;</span>,</span>
+<span id="cb204-22"><a href="講義ノートの図.html#cb204-22"></a>    <span class="dt">legend.margin =</span> <span class="kw">margin</span>(<span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>)</span>
+<span id="cb204-23"><a href="講義ノートの図.html#cb204-23"></a>  )</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
+<p>Figure 6.3</p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="講義ノートの図.html#cb205-1"></a>biplot &lt;-<span class="st"> </span><span class="kw">tibble</span>()</span>
+<span id="cb205-2"><a href="講義ノートの図.html#cb205-2"></a>p &lt;-<span class="st"> </span><span class="fl">0.3</span></span>
+<span id="cb205-3"><a href="講義ノートの図.html#cb205-3"></a></span>
+<span id="cb205-4"><a href="講義ノートの図.html#cb205-4"></a><span class="cf">for</span> (t <span class="cf">in</span> <span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">1000</span>,<span class="dv">10000</span>)) {</span>
+<span id="cb205-5"><a href="講義ノートの図.html#cb205-5"></a>  <span class="kw">tibble</span>(</span>
+<span id="cb205-6"><a href="講義ノートの図.html#cb205-6"></a>    <span class="dt">n=</span><span class="kw">rep</span>(t,t<span class="op">+</span><span class="dv">1</span>),</span>
+<span id="cb205-7"><a href="講義ノートの図.html#cb205-7"></a>    <span class="dt">x=</span>(<span class="dv">0</span><span class="op">:</span>t <span class="op">-</span><span class="st"> </span>t<span class="op">*</span>p)<span class="op">/</span><span class="kw">sqrt</span>(t<span class="op">*</span>p<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p)),</span>
+<span id="cb205-8"><a href="講義ノートの図.html#cb205-8"></a>    <span class="dt">y=</span><span class="kw">sqrt</span>(t<span class="op">*</span>p<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p))<span class="op">*</span><span class="kw">dbinom</span>(<span class="dv">0</span><span class="op">:</span>t,t,p)</span>
+<span id="cb205-9"><a href="講義ノートの図.html#cb205-9"></a>  ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">bind_rows</span>(biplot,.) -&gt;<span class="st"> </span>biplot</span>
+<span id="cb205-10"><a href="講義ノートの図.html#cb205-10"></a>}</span>
+<span id="cb205-11"><a href="講義ノートの図.html#cb205-11"></a></span>
+<span id="cb205-12"><a href="講義ノートの図.html#cb205-12"></a>biplot <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb205-13"><a href="講義ノートの図.html#cb205-13"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">n =</span> <span class="kw">factor</span>(n,<span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;n=10^1&quot;</span>,</span>
+<span id="cb205-14"><a href="講義ノートの図.html#cb205-14"></a>                                 <span class="st">&quot;n=10^2&quot;</span>,</span>
+<span id="cb205-15"><a href="講義ノートの図.html#cb205-15"></a>                                 <span class="st">&quot;n=10^3&quot;</span>,</span>
+<span id="cb205-16"><a href="講義ノートの図.html#cb205-16"></a>                                 <span class="st">&quot;n=10^4&quot;</span>))</span>
+<span id="cb205-17"><a href="講義ノートの図.html#cb205-17"></a>         ) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb205-18"><a href="講義ノートの図.html#cb205-18"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>x, <span class="dt">y=</span>y)) <span class="op">+</span></span>
+<span id="cb205-19"><a href="講義ノートの図.html#cb205-19"></a><span class="st">  </span><span class="kw">geom_step</span>() <span class="op">+</span></span>
+<span id="cb205-20"><a href="講義ノートの図.html#cb205-20"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>,<span class="dv">3</span>)) <span class="op">+</span></span>
+<span id="cb205-21"><a href="講義ノートの図.html#cb205-21"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;z&quot;</span>, <span class="dt">y=</span><span class="st">&quot;g(z)&quot;</span>) <span class="op">+</span></span>
+<span id="cb205-22"><a href="講義ノートの図.html#cb205-22"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>n) <span class="op">+</span></span>
+<span id="cb205-23"><a href="講義ノートの図.html#cb205-23"></a><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span></span>
+<span id="cb205-24"><a href="講義ノートの図.html#cb205-24"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">strip.background =</span> <span class="kw">element_blank</span>())</span></code></pre></div>
+<pre><code>## Warning: Removed 6863 row(s) containing missing values (geom_path).</code></pre>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
+<p>Figure 6.4</p>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="講義ノートの図.html#cb207-1"></a><span class="kw">ggplot</span>(<span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">10</span>)), <span class="kw">aes</span>(<span class="dt">x =</span> x)) <span class="op">+</span></span>
+<span id="cb207-2"><a href="講義ノートの図.html#cb207-2"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb207-3"><a href="講義ノートの図.html#cb207-3"></a>                <span class="kw">aes</span>(<span class="dt">colour =</span> <span class="st">&quot;\u03bc =0, \u03c3^2 = 1&quot;</span>), <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb207-4"><a href="講義ノートの図.html#cb207-4"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb207-5"><a href="講義ノートの図.html#cb207-5"></a>                <span class="kw">aes</span>(<span class="dt">colour =</span> <span class="st">&quot;\u03bc =1, \u03c3^2 = 4&quot;</span>), <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb207-6"><a href="講義ノートの図.html#cb207-6"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb207-7"><a href="講義ノートの図.html#cb207-7"></a>                <span class="kw">aes</span>(<span class="dt">colour =</span> <span class="st">&quot;\u03bc =2, \u03c3^2 = 9&quot;</span>), <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb207-8"><a href="講義ノートの図.html#cb207-8"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;y&quot;</span>,</span>
+<span id="cb207-9"><a href="講義ノートの図.html#cb207-9"></a>                      <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">1</span>),</span>
+<span id="cb207-10"><a href="講義ノートの図.html#cb207-10"></a>                     <span class="dt">limits=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">10</span>)) <span class="op">+</span></span>
+<span id="cb207-11"><a href="講義ノートの図.html#cb207-11"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;h(y)&quot;</span>) <span class="op">+</span></span>
+<span id="cb207-12"><a href="講義ノートの図.html#cb207-12"></a><span class="st">  </span><span class="co">#scale_colour_brewer(palette=&quot;Accent&quot;) +</span></span>
+<span id="cb207-13"><a href="講義ノートの図.html#cb207-13"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">colour =</span> <span class="st">&quot;parameters&quot;</span>) <span class="op">+</span></span>
+<span id="cb207-14"><a href="講義ノートの図.html#cb207-14"></a><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span></span>
+<span id="cb207-15"><a href="講義ノートの図.html#cb207-15"></a><span class="st">  </span><span class="kw">theme</span>(</span>
+<span id="cb207-16"><a href="講義ノートの図.html#cb207-16"></a>    <span class="dt">legend.position =</span> <span class="kw">c</span>(<span class="fl">0.95</span>, <span class="fl">0.95</span>),</span>
+<span id="cb207-17"><a href="講義ノートの図.html#cb207-17"></a>    <span class="dt">legend.justification =</span> <span class="kw">c</span>(<span class="st">&quot;right&quot;</span>, <span class="st">&quot;top&quot;</span>),</span>
+<span id="cb207-18"><a href="講義ノートの図.html#cb207-18"></a>    <span class="dt">legend.box.just =</span> <span class="st">&quot;right&quot;</span>,</span>
+<span id="cb207-19"><a href="講義ノートの図.html#cb207-19"></a>    <span class="dt">legend.margin =</span> <span class="kw">margin</span>(<span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>)</span>
+<span id="cb207-20"><a href="講義ノートの図.html#cb207-20"></a>  )</span></code></pre></div>
+<pre><code>## Warning: `mapping` is not used by stat_function()
+
+## Warning: `mapping` is not used by stat_function()
+
+## Warning: `mapping` is not used by stat_function()</code></pre>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
+<p>Figure 6.5</p>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="講義ノートの図.html#cb209-1"></a><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="op">-</span><span class="fl">3.5</span>, <span class="fl">3.5</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb209-2"><a href="講義ノートの図.html#cb209-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x)) <span class="op">+</span></span>
+<span id="cb209-3"><a href="講義ノートの図.html#cb209-3"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, </span>
+<span id="cb209-4"><a href="講義ノートの図.html#cb209-4"></a>                <span class="dt">n =</span> <span class="dv">1000</span>, </span>
+<span id="cb209-5"><a href="講義ノートの図.html#cb209-5"></a>                <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="dv">0</span>,<span class="dt">sd =</span> <span class="dv">1</span>), <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb209-6"><a href="講義ノートの図.html#cb209-6"></a><span class="st">  </span><span class="kw">geom_area</span>(<span class="dt">stat =</span> <span class="st">&#39;function&#39;</span>,</span>
+<span id="cb209-7"><a href="講義ノートの図.html#cb209-7"></a>            <span class="dt">fun =</span> dnorm,</span>
+<span id="cb209-8"><a href="講義ノートの図.html#cb209-8"></a>            <span class="dt">fill =</span> <span class="st">&#39;grey50&#39;</span>,</span>
+<span id="cb209-9"><a href="講義ノートの図.html#cb209-9"></a>            <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb209-10"><a href="講義ノートの図.html#cb209-10"></a>            <span class="dt">alpha =</span> <span class="fl">0.3</span>) <span class="op">+</span></span>
+<span id="cb209-11"><a href="講義ノートの図.html#cb209-11"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb209-12"><a href="講義ノートの図.html#cb209-12"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="ot">NULL</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb209-13"><a href="講義ノートの図.html#cb209-13"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="ot">NULL</span>) <span class="op">+</span></span>
+<span id="cb209-14"><a href="講義ノートの図.html#cb209-14"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;segment&quot;</span>, <span class="dt">x=</span><span class="op">-</span><span class="dv">1</span>,<span class="dt">xend=</span><span class="op">-</span><span class="dv">1</span>,<span class="dt">y=</span><span class="kw">dnorm</span>(<span class="op">-</span><span class="dv">1</span>),<span class="dt">yend=</span><span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb209-15"><a href="講義ノートの図.html#cb209-15"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;segment&quot;</span>, <span class="dt">x=</span><span class="dv">1</span>,<span class="dt">xend=</span><span class="dv">1</span>,<span class="dt">y=</span><span class="kw">dnorm</span>(<span class="dv">1</span>),<span class="dt">yend=</span><span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb209-16"><a href="講義ノートの図.html#cb209-16"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x=</span><span class="op">-</span><span class="dv">1</span>, <span class="dt">y=</span><span class="op">-</span><span class="fl">0.02</span>, <span class="dt">parse=</span><span class="ot">TRUE</span>,<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;-1&quot;</span>)) <span class="op">+</span></span>
+<span id="cb209-17"><a href="講義ノートの図.html#cb209-17"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x=</span><span class="dv">1</span>, <span class="dt">y=</span><span class="op">-</span><span class="fl">0.02</span>, <span class="dt">parse=</span><span class="ot">TRUE</span>,<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;1&quot;</span>)) <span class="op">+</span></span>
+<span id="cb209-18"><a href="講義ノートの図.html#cb209-18"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x=</span><span class="dv">0</span>, <span class="dt">y=</span><span class="fl">0.1</span>, <span class="dt">parse=</span><span class="ot">TRUE</span>, </span>
+<span id="cb209-19"><a href="講義ノートの図.html#cb209-19"></a>           <span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;integral(g(z) * dx, -1, 1)&quot;</span>)) <span class="op">+</span></span>
+<span id="cb209-20"><a href="講義ノートの図.html#cb209-20"></a><span class="st">  </span><span class="kw">theme_void</span>()</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-108-1.png" width="672" /></p>
+<p>Figure 7.1</p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="講義ノートの図.html#cb210-1"></a><span class="kw">ggplot</span>(<span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">10</span>)), <span class="kw">aes</span>(<span class="dt">x =</span> x)) <span class="op">+</span></span>
+<span id="cb210-2"><a href="講義ノートの図.html#cb210-2"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb210-3"><a href="講義ノートの図.html#cb210-3"></a>                <span class="kw">aes</span>(<span class="dt">colour =</span> <span class="st">&quot;N(0,1)&quot;</span>), <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb210-4"><a href="講義ノートの図.html#cb210-4"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dv">1</span>,<span class="dv">2</span>),</span>
+<span id="cb210-5"><a href="講義ノートの図.html#cb210-5"></a>                <span class="kw">aes</span>(<span class="dt">colour =</span> <span class="st">&quot;N(1,4)&quot;</span>), <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb210-6"><a href="講義ノートの図.html#cb210-6"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dv">2</span>,<span class="dv">3</span>),</span>
+<span id="cb210-7"><a href="講義ノートの図.html#cb210-7"></a>                <span class="kw">aes</span>(<span class="dt">colour =</span> <span class="st">&quot;N(2,9)&quot;</span>), <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb210-8"><a href="講義ノートの図.html#cb210-8"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;x&quot;</span>,</span>
+<span id="cb210-9"><a href="講義ノートの図.html#cb210-9"></a>                     <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">10</span>, <span class="dv">2</span>),</span>
+<span id="cb210-10"><a href="講義ノートの図.html#cb210-10"></a>                     <span class="dt">limits=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">10</span>)) <span class="op">+</span></span>
+<span id="cb210-11"><a href="講義ノートの図.html#cb210-11"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;h(x)&quot;</span>) <span class="op">+</span></span>
+<span id="cb210-12"><a href="講義ノートの図.html#cb210-12"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">colour =</span> <span class="st">&quot;distribution&quot;</span>) <span class="op">+</span></span>
+<span id="cb210-13"><a href="講義ノートの図.html#cb210-13"></a><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span></span>
+<span id="cb210-14"><a href="講義ノートの図.html#cb210-14"></a><span class="st">  </span><span class="kw">theme</span>(</span>
+<span id="cb210-15"><a href="講義ノートの図.html#cb210-15"></a>    <span class="dt">legend.position =</span> <span class="kw">c</span>(<span class="fl">0.95</span>, <span class="fl">0.95</span>),</span>
+<span id="cb210-16"><a href="講義ノートの図.html#cb210-16"></a>    <span class="dt">legend.justification =</span> <span class="kw">c</span>(<span class="st">&quot;right&quot;</span>, <span class="st">&quot;top&quot;</span>),</span>
+<span id="cb210-17"><a href="講義ノートの図.html#cb210-17"></a>    <span class="dt">legend.box.just =</span> <span class="st">&quot;right&quot;</span>,</span>
+<span id="cb210-18"><a href="講義ノートの図.html#cb210-18"></a>    <span class="dt">legend.margin =</span> <span class="kw">margin</span>(<span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>)</span>
+<span id="cb210-19"><a href="講義ノートの図.html#cb210-19"></a>  )</span></code></pre></div>
+<pre><code>## Warning: `data_frame()` is deprecated as of tibble 1.1.0.
+## Please use `tibble()` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
+<pre><code>## Warning: `mapping` is not used by stat_function()
+
+## Warning: `mapping` is not used by stat_function()
+
+## Warning: `mapping` is not used by stat_function()</code></pre>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-109-1.png" width="672" /></p>
+<p>Figure 7.2</p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="講義ノートの図.html#cb213-1"></a><span class="kw">ggplot</span>(<span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>)), <span class="kw">aes</span>(<span class="dt">x =</span> x)) <span class="op">+</span></span>
+<span id="cb213-2"><a href="講義ノートの図.html#cb213-2"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb213-3"><a href="講義ノートの図.html#cb213-3"></a>                <span class="kw">aes</span>(<span class="dt">colour =</span> <span class="st">&quot;N(0,1)&quot;</span>), <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb213-4"><a href="講義ノートの図.html#cb213-4"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dt, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dv">1</span>),</span>
+<span id="cb213-5"><a href="講義ノートの図.html#cb213-5"></a>                <span class="kw">aes</span>(<span class="dt">colour =</span> <span class="st">&quot;t(1)&quot;</span>), <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb213-6"><a href="講義ノートの図.html#cb213-6"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dt, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dv">3</span>),</span>
+<span id="cb213-7"><a href="講義ノートの図.html#cb213-7"></a>                <span class="kw">aes</span>(<span class="dt">colour =</span> <span class="st">&quot;t(3)&quot;</span>), <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb213-8"><a href="講義ノートの図.html#cb213-8"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dt, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dv">5</span>),</span>
+<span id="cb213-9"><a href="講義ノートの図.html#cb213-9"></a>                <span class="kw">aes</span>(<span class="dt">colour =</span> <span class="st">&quot;t(5)&quot;</span>), <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb213-10"><a href="講義ノートの図.html#cb213-10"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;x&quot;</span>,</span>
+<span id="cb213-11"><a href="講義ノートの図.html#cb213-11"></a>                     <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">1</span>),</span>
+<span id="cb213-12"><a href="講義ノートの図.html#cb213-12"></a>                     <span class="dt">limits=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>)) <span class="op">+</span></span>
+<span id="cb213-13"><a href="講義ノートの図.html#cb213-13"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;f(x)&quot;</span>) <span class="op">+</span></span>
+<span id="cb213-14"><a href="講義ノートの図.html#cb213-14"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">colour =</span> <span class="st">&quot;distribution&quot;</span>) <span class="op">+</span></span>
+<span id="cb213-15"><a href="講義ノートの図.html#cb213-15"></a><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span></span>
+<span id="cb213-16"><a href="講義ノートの図.html#cb213-16"></a><span class="st">  </span><span class="kw">theme</span>(</span>
+<span id="cb213-17"><a href="講義ノートの図.html#cb213-17"></a>    <span class="dt">legend.position =</span> <span class="kw">c</span>(<span class="fl">0.95</span>, <span class="fl">0.95</span>),</span>
+<span id="cb213-18"><a href="講義ノートの図.html#cb213-18"></a>    <span class="dt">legend.justification =</span> <span class="kw">c</span>(<span class="st">&quot;right&quot;</span>, <span class="st">&quot;top&quot;</span>),</span>
+<span id="cb213-19"><a href="講義ノートの図.html#cb213-19"></a>    <span class="dt">legend.box.just =</span> <span class="st">&quot;right&quot;</span>,</span>
+<span id="cb213-20"><a href="講義ノートの図.html#cb213-20"></a>    <span class="dt">legend.margin =</span> <span class="kw">margin</span>(<span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>)</span>
+<span id="cb213-21"><a href="講義ノートの図.html#cb213-21"></a>  )</span></code></pre></div>
+<pre><code>## Warning: `mapping` is not used by stat_function()
+
+## Warning: `mapping` is not used by stat_function()
+
+## Warning: `mapping` is not used by stat_function()
+
+## Warning: `mapping` is not used by stat_function()</code></pre>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-110-1.png" width="672" /></p>
+<p>Figure 8.1</p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="講義ノートの図.html#cb215-1"></a><span class="kw">tibble</span>(</span>
+<span id="cb215-2"><a href="講義ノートの図.html#cb215-2"></a>  <span class="dt">x =</span> <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.01</span>),</span>
+<span id="cb215-3"><a href="講義ノートの図.html#cb215-3"></a>  <span class="dt">L =</span> <span class="kw">sapply</span>(<span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.01</span>), <span class="cf">function</span>(q) q<span class="op">^</span><span class="dv">7</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>q)<span class="op">^</span><span class="dv">3</span>)</span>
+<span id="cb215-4"><a href="講義ノートの図.html#cb215-4"></a>) <span class="op">%&gt;%</span></span>
+<span id="cb215-5"><a href="講義ノートの図.html#cb215-5"></a><span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span></span>
+<span id="cb215-6"><a href="講義ノートの図.html#cb215-6"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>L), <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb215-7"><a href="講義ノートの図.html#cb215-7"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;p&quot;</span>,<span class="dt">y=</span><span class="st">&quot;L(p)&quot;</span>) <span class="op">+</span></span>
+<span id="cb215-8"><a href="講義ノートの図.html#cb215-8"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
+<p>Figure 8.2</p>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="講義ノートの図.html#cb216-1"></a><span class="kw">tibble</span>(</span>
+<span id="cb216-2"><a href="講義ノートの図.html#cb216-2"></a>  <span class="dt">x =</span> <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.01</span>),</span>
+<span id="cb216-3"><a href="講義ノートの図.html#cb216-3"></a>  <span class="dt">L =</span> <span class="kw">sapply</span>(<span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.01</span>), <span class="cf">function</span>(q) <span class="dv">7</span><span class="op">*</span><span class="kw">log</span>(q) <span class="op">+</span><span class="st"> </span><span class="dv">3</span><span class="op">*</span><span class="kw">log</span>(<span class="dv">1</span><span class="op">-</span>q))</span>
+<span id="cb216-4"><a href="講義ノートの図.html#cb216-4"></a>) <span class="op">%&gt;%</span></span>
+<span id="cb216-5"><a href="講義ノートの図.html#cb216-5"></a><span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span></span>
+<span id="cb216-6"><a href="講義ノートの図.html#cb216-6"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>L), <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb216-7"><a href="講義ノートの図.html#cb216-7"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;p&quot;</span>,<span class="dt">y=</span><span class="st">&quot;log L(p)&quot;</span>) <span class="op">+</span></span>
+<span id="cb216-8"><a href="講義ノートの図.html#cb216-8"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-112-1.png" width="672" /></p>
+<p>Figure 8.3</p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="講義ノートの図.html#cb217-1"></a><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">5</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb217-2"><a href="講義ノートの図.html#cb217-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x)) <span class="op">+</span></span>
+<span id="cb217-3"><a href="講義ノートの図.html#cb217-3"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb217-4"><a href="講義ノートの図.html#cb217-4"></a>                <span class="kw">aes</span>(<span class="dt">colour =</span> <span class="st">&quot;estimate A&quot;</span>), <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb217-5"><a href="講義ノートの図.html#cb217-5"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, <span class="dt">args =</span> <span class="kw">list</span>(<span class="fl">1.5</span>, <span class="dv">1</span>),</span>
+<span id="cb217-6"><a href="講義ノートの図.html#cb217-6"></a>                <span class="kw">aes</span>(<span class="dt">colour =</span> <span class="st">&quot;estimate B&quot;</span>), <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb217-7"><a href="講義ノートの図.html#cb217-7"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb217-8"><a href="講義ノートの図.html#cb217-8"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;segment&quot;</span>, <span class="dt">x=</span><span class="dv">0</span>,<span class="dt">xend=</span><span class="dv">0</span>,<span class="dt">y=</span><span class="kw">dnorm</span>(<span class="dv">0</span>),<span class="dt">yend=</span><span class="dv">0</span>, <span class="dt">linetype=</span><span class="st">&quot;dashed&quot;</span>) <span class="op">+</span></span>
+<span id="cb217-9"><a href="講義ノートの図.html#cb217-9"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x=</span><span class="dv">0</span>, <span class="dt">y=</span><span class="op">-</span><span class="fl">0.02</span>, <span class="dt">parse=</span><span class="ot">TRUE</span>, </span>
+<span id="cb217-10"><a href="講義ノートの図.html#cb217-10"></a>           <span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;theta&quot;</span>)) <span class="op">+</span></span>
+<span id="cb217-11"><a href="講義ノートの図.html#cb217-11"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">colour =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span></span>
+<span id="cb217-12"><a href="講義ノートの図.html#cb217-12"></a><span class="st">  </span><span class="kw">theme_void</span>() <span class="op">+</span></span>
+<span id="cb217-13"><a href="講義ノートの図.html#cb217-13"></a><span class="st">  </span><span class="kw">theme</span>(</span>
+<span id="cb217-14"><a href="講義ノートの図.html#cb217-14"></a>    <span class="dt">legend.position =</span> <span class="kw">c</span>(<span class="fl">0.95</span>, <span class="fl">0.95</span>),</span>
+<span id="cb217-15"><a href="講義ノートの図.html#cb217-15"></a>    <span class="dt">legend.justification =</span> <span class="kw">c</span>(<span class="st">&quot;right&quot;</span>, <span class="st">&quot;top&quot;</span>),</span>
+<span id="cb217-16"><a href="講義ノートの図.html#cb217-16"></a>    <span class="dt">legend.box.just =</span> <span class="st">&quot;right&quot;</span>,</span>
+<span id="cb217-17"><a href="講義ノートの図.html#cb217-17"></a>    <span class="dt">legend.margin =</span> <span class="kw">margin</span>(<span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>)</span>
+<span id="cb217-18"><a href="講義ノートの図.html#cb217-18"></a>  )</span></code></pre></div>
+<pre><code>## Warning: `mapping` is not used by stat_function()
+
+## Warning: `mapping` is not used by stat_function()</code></pre>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-113-1.png" width="672" /></p>
+<p>Figure 8.4</p>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="講義ノートの図.html#cb219-1"></a><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb219-2"><a href="講義ノートの図.html#cb219-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x)) <span class="op">+</span></span>
+<span id="cb219-3"><a href="講義ノートの図.html#cb219-3"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dv">0</span>, <span class="fl">0.5</span>),</span>
+<span id="cb219-4"><a href="講義ノートの図.html#cb219-4"></a>                <span class="kw">aes</span>(<span class="dt">colour =</span> <span class="st">&quot;estimate A&quot;</span>), <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb219-5"><a href="講義ノートの図.html#cb219-5"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb219-6"><a href="講義ノートの図.html#cb219-6"></a>                <span class="kw">aes</span>(<span class="dt">colour =</span> <span class="st">&quot;estimate B&quot;</span>), <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb219-7"><a href="講義ノートの図.html#cb219-7"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb219-8"><a href="講義ノートの図.html#cb219-8"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;segment&quot;</span>, <span class="dt">x=</span><span class="dv">0</span>,<span class="dt">xend=</span><span class="dv">0</span>,<span class="dt">y=</span><span class="kw">dnorm</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.5</span>),</span>
+<span id="cb219-9"><a href="講義ノートの図.html#cb219-9"></a>           <span class="dt">yend=</span><span class="dv">0</span>, <span class="dt">linetype=</span><span class="st">&quot;dashed&quot;</span>) <span class="op">+</span></span>
+<span id="cb219-10"><a href="講義ノートの図.html#cb219-10"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x=</span><span class="dv">0</span>, <span class="dt">y=</span><span class="op">-</span><span class="fl">0.02</span>, <span class="dt">parse=</span><span class="ot">TRUE</span>, </span>
+<span id="cb219-11"><a href="講義ノートの図.html#cb219-11"></a>           <span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;theta&quot;</span>)) <span class="op">+</span></span>
+<span id="cb219-12"><a href="講義ノートの図.html#cb219-12"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">colour =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span></span>
+<span id="cb219-13"><a href="講義ノートの図.html#cb219-13"></a><span class="st">  </span><span class="kw">theme_void</span>() <span class="op">+</span></span>
+<span id="cb219-14"><a href="講義ノートの図.html#cb219-14"></a><span class="st">  </span><span class="kw">theme</span>(</span>
+<span id="cb219-15"><a href="講義ノートの図.html#cb219-15"></a>    <span class="dt">legend.position =</span> <span class="kw">c</span>(<span class="fl">0.95</span>, <span class="fl">0.95</span>),</span>
+<span id="cb219-16"><a href="講義ノートの図.html#cb219-16"></a>    <span class="dt">legend.justification =</span> <span class="kw">c</span>(<span class="st">&quot;right&quot;</span>, <span class="st">&quot;top&quot;</span>),</span>
+<span id="cb219-17"><a href="講義ノートの図.html#cb219-17"></a>    <span class="dt">legend.box.just =</span> <span class="st">&quot;right&quot;</span>,</span>
+<span id="cb219-18"><a href="講義ノートの図.html#cb219-18"></a>    <span class="dt">legend.margin =</span> <span class="kw">margin</span>(<span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>)</span>
+<span id="cb219-19"><a href="講義ノートの図.html#cb219-19"></a>  )</span></code></pre></div>
+<pre><code>## Warning: `mapping` is not used by stat_function()
+
+## Warning: `mapping` is not used by stat_function()</code></pre>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-114-1.png" width="672" /></p>
+<p>Figure 9.1</p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="講義ノートの図.html#cb221-1"></a>CItest&lt;-<span class="cf">function</span>(m,s,n,r) {</span>
+<span id="cb221-2"><a href="講義ノートの図.html#cb221-2"></a>  rdata&lt;-<span class="kw">replicate</span>(r,{</span>
+<span id="cb221-3"><a href="講義ノートの図.html#cb221-3"></a>    ex&lt;-<span class="kw">rnorm</span>(n,m,s)</span>
+<span id="cb221-4"><a href="講義ノートの図.html#cb221-4"></a>    m&lt;-<span class="kw">mean</span>(ex)</span>
+<span id="cb221-5"><a href="講義ノートの図.html#cb221-5"></a>    ci&lt;-<span class="fl">1.96</span><span class="op">*</span><span class="kw">sd</span>(ex)<span class="op">/</span><span class="kw">sqrt</span>(n)</span>
+<span id="cb221-6"><a href="講義ノートの図.html#cb221-6"></a>    <span class="kw">c</span>(m<span class="op">-</span>ci,m,m<span class="op">+</span>ci)</span>
+<span id="cb221-7"><a href="講義ノートの図.html#cb221-7"></a>  })</span>
+<span id="cb221-8"><a href="講義ノートの図.html#cb221-8"></a>  rdata&lt;-<span class="kw">data.frame</span>(<span class="dv">1</span><span class="op">:</span>r,<span class="kw">t</span>(rdata))</span>
+<span id="cb221-9"><a href="講義ノートの図.html#cb221-9"></a>  <span class="kw">colnames</span>(rdata)&lt;-<span class="kw">c</span>(<span class="st">&quot;trials&quot;</span>,<span class="st">&quot;minci&quot;</span>,<span class="st">&quot;mean&quot;</span>,<span class="st">&quot;maxci&quot;</span>)</span>
+<span id="cb221-10"><a href="講義ノートの図.html#cb221-10"></a>  sr&lt;-<span class="kw">sum</span>(rdata<span class="op">$</span>minci<span class="op">&lt;</span>m <span class="op">&amp;</span><span class="st"> </span>rdata<span class="op">$</span>maxci <span class="op">&gt;</span><span class="st"> </span>m)<span class="op">/</span>r</span>
+<span id="cb221-11"><a href="講義ノートの図.html#cb221-11"></a>  <span class="kw">cat</span>(<span class="kw">paste</span>(<span class="st">&quot;正答率: &quot;</span>,sr))</span>
+<span id="cb221-12"><a href="講義ノートの図.html#cb221-12"></a>  ggplot2<span class="op">::</span><span class="kw">ggplot</span>(<span class="dt">data =</span> rdata, <span class="kw">aes</span>(<span class="dt">x =</span> mean ,<span class="dt">y =</span> trials)) <span class="op">+</span></span>
+<span id="cb221-13"><a href="講義ノートの図.html#cb221-13"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
+<span id="cb221-14"><a href="講義ノートの図.html#cb221-14"></a><span class="st">    </span><span class="kw">geom_errorbarh</span>(<span class="kw">aes</span>(<span class="dt">xmin=</span>minci, <span class="dt">xmax=</span>maxci)) <span class="op">+</span></span>
+<span id="cb221-15"><a href="講義ノートの図.html#cb221-15"></a><span class="st">    </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> m, <span class="dt">color=</span><span class="st">&quot;red&quot;</span>) <span class="op">+</span></span>
+<span id="cb221-16"><a href="講義ノートの図.html#cb221-16"></a><span class="st">    </span><span class="kw">theme_classic</span>()</span>
+<span id="cb221-17"><a href="講義ノートの図.html#cb221-17"></a>}</span>
+<span id="cb221-18"><a href="講義ノートの図.html#cb221-18"></a><span class="kw">CItest</span>(<span class="dv">160</span>,<span class="dv">20</span>,<span class="dv">10</span>,<span class="dv">100</span>)</span></code></pre></div>
+<pre><code>## 正答率:  0.97</code></pre>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-115-1.png" width="672" /></p>
+<p>Figure 9.2</p>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="講義ノートの図.html#cb223-1"></a><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="op">-</span><span class="fl">3.5</span>, <span class="fl">3.5</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb223-2"><a href="講義ノートの図.html#cb223-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x)) <span class="op">+</span></span>
+<span id="cb223-3"><a href="講義ノートの図.html#cb223-3"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, </span>
+<span id="cb223-4"><a href="講義ノートの図.html#cb223-4"></a>                <span class="dt">n =</span> <span class="dv">1000</span>, </span>
+<span id="cb223-5"><a href="講義ノートの図.html#cb223-5"></a>                <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="dv">0</span>,<span class="dt">sd =</span> <span class="dv">1</span>), <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb223-6"><a href="講義ノートの図.html#cb223-6"></a><span class="st">  </span><span class="kw">geom_area</span>(<span class="dt">stat =</span> <span class="st">&#39;function&#39;</span>,</span>
+<span id="cb223-7"><a href="講義ノートの図.html#cb223-7"></a>            <span class="dt">fun =</span> dnorm,</span>
+<span id="cb223-8"><a href="講義ノートの図.html#cb223-8"></a>            <span class="dt">fill =</span> <span class="st">&#39;grey50&#39;</span>,</span>
+<span id="cb223-9"><a href="講義ノートの図.html#cb223-9"></a>            <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="fl">3.5</span>, <span class="fl">-1.9</span>),</span>
+<span id="cb223-10"><a href="講義ノートの図.html#cb223-10"></a>            <span class="dt">alpha =</span> <span class="fl">0.3</span>) <span class="op">+</span></span>
+<span id="cb223-11"><a href="講義ノートの図.html#cb223-11"></a><span class="st">  </span><span class="kw">geom_area</span>(<span class="dt">stat =</span> <span class="st">&#39;function&#39;</span>,</span>
+<span id="cb223-12"><a href="講義ノートの図.html#cb223-12"></a>            <span class="dt">fun =</span> dnorm,</span>
+<span id="cb223-13"><a href="講義ノートの図.html#cb223-13"></a>            <span class="dt">fill =</span> <span class="st">&#39;grey50&#39;</span>,</span>
+<span id="cb223-14"><a href="講義ノートの図.html#cb223-14"></a>            <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="fl">1.9</span>, <span class="fl">3.5</span>),</span>
+<span id="cb223-15"><a href="講義ノートの図.html#cb223-15"></a>            <span class="dt">alpha =</span> <span class="fl">0.3</span>) <span class="op">+</span></span>
+<span id="cb223-16"><a href="講義ノートの図.html#cb223-16"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb223-17"><a href="講義ノートの図.html#cb223-17"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="ot">NULL</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb223-18"><a href="講義ノートの図.html#cb223-18"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="ot">NULL</span>) <span class="op">+</span></span>
+<span id="cb223-19"><a href="講義ノートの図.html#cb223-19"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;segment&quot;</span>, <span class="dt">x=</span><span class="dv">0</span>,<span class="dt">xend=</span><span class="dv">0</span>,<span class="dt">y=</span><span class="kw">dnorm</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">yend=</span><span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb223-20"><a href="講義ノートの図.html#cb223-20"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;segment&quot;</span>, <span class="dt">x=</span><span class="op">-</span><span class="fl">1.9</span>,<span class="dt">xend=</span><span class="op">-</span><span class="fl">1.9</span>,<span class="dt">y=</span><span class="kw">dnorm</span>(<span class="op">-</span><span class="fl">1.9</span>),<span class="dt">yend=</span><span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb223-21"><a href="講義ノートの図.html#cb223-21"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;segment&quot;</span>, <span class="dt">x=</span><span class="fl">1.9</span>,<span class="dt">xend=</span><span class="fl">1.9</span>,<span class="dt">y=</span><span class="kw">dnorm</span>(<span class="fl">1.9</span>),<span class="dt">yend=</span><span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb223-22"><a href="講義ノートの図.html#cb223-22"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x=</span><span class="op">-</span><span class="fl">1.9</span>, <span class="dt">y=</span><span class="op">-</span><span class="fl">0.02</span>, <span class="dt">parse=</span><span class="ot">TRUE</span>,<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;-z[alpha/2]&quot;</span>)) <span class="op">+</span></span>
+<span id="cb223-23"><a href="講義ノートの図.html#cb223-23"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x=</span><span class="fl">1.9</span>, <span class="dt">y=</span><span class="op">-</span><span class="fl">0.02</span>, <span class="dt">parse=</span><span class="ot">TRUE</span>,<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;z[alpha/2]&quot;</span>)) <span class="op">+</span></span>
+<span id="cb223-24"><a href="講義ノートの図.html#cb223-24"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x=</span><span class="fl">2.15</span>, <span class="dt">y=</span><span class="fl">0.02</span>, <span class="dt">parse=</span><span class="ot">TRUE</span>, </span>
+<span id="cb223-25"><a href="講義ノートの図.html#cb223-25"></a>           <span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;alpha/2&quot;</span>)) <span class="op">+</span></span>
+<span id="cb223-26"><a href="講義ノートの図.html#cb223-26"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x=</span><span class="op">-</span><span class="fl">2.15</span>, <span class="dt">y=</span><span class="fl">0.02</span>, <span class="dt">parse=</span><span class="ot">TRUE</span>, </span>
+<span id="cb223-27"><a href="講義ノートの図.html#cb223-27"></a>           <span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;alpha/2&quot;</span>)) <span class="op">+</span></span>
+<span id="cb223-28"><a href="講義ノートの図.html#cb223-28"></a><span class="st">  </span><span class="kw">theme_void</span>()</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
+<p>Figure 10.1</p>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="講義ノートの図.html#cb224-1"></a><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="op">-</span><span class="fl">3.5</span>, <span class="fl">3.5</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb224-2"><a href="講義ノートの図.html#cb224-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x)) <span class="op">+</span></span>
+<span id="cb224-3"><a href="講義ノートの図.html#cb224-3"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, </span>
+<span id="cb224-4"><a href="講義ノートの図.html#cb224-4"></a>                <span class="dt">n =</span> <span class="dv">1000</span>, </span>
+<span id="cb224-5"><a href="講義ノートの図.html#cb224-5"></a>                <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="dv">0</span>,<span class="dt">sd =</span> <span class="dv">1</span>), <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb224-6"><a href="講義ノートの図.html#cb224-6"></a><span class="st">  </span><span class="kw">geom_area</span>(<span class="dt">stat =</span> <span class="st">&#39;function&#39;</span>,</span>
+<span id="cb224-7"><a href="講義ノートの図.html#cb224-7"></a>            <span class="dt">fun =</span> dnorm,</span>
+<span id="cb224-8"><a href="講義ノートの図.html#cb224-8"></a>            <span class="dt">fill =</span> <span class="st">&#39;grey50&#39;</span>,</span>
+<span id="cb224-9"><a href="講義ノートの図.html#cb224-9"></a>            <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="fl">3.5</span>, <span class="fl">-1.96</span>),</span>
+<span id="cb224-10"><a href="講義ノートの図.html#cb224-10"></a>            <span class="dt">alpha =</span> <span class="fl">0.3</span>) <span class="op">+</span></span>
+<span id="cb224-11"><a href="講義ノートの図.html#cb224-11"></a><span class="st">  </span><span class="kw">geom_area</span>(<span class="dt">stat =</span> <span class="st">&#39;function&#39;</span>,</span>
+<span id="cb224-12"><a href="講義ノートの図.html#cb224-12"></a>            <span class="dt">fun =</span> dnorm,</span>
+<span id="cb224-13"><a href="講義ノートの図.html#cb224-13"></a>            <span class="dt">fill =</span> <span class="st">&#39;grey50&#39;</span>,</span>
+<span id="cb224-14"><a href="講義ノートの図.html#cb224-14"></a>            <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="fl">1.96</span>, <span class="fl">3.5</span>),</span>
+<span id="cb224-15"><a href="講義ノートの図.html#cb224-15"></a>            <span class="dt">alpha =</span> <span class="fl">0.3</span>) <span class="op">+</span></span>
+<span id="cb224-16"><a href="講義ノートの図.html#cb224-16"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb224-17"><a href="講義ノートの図.html#cb224-17"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="ot">NULL</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb224-18"><a href="講義ノートの図.html#cb224-18"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="ot">NULL</span>) <span class="op">+</span></span>
+<span id="cb224-19"><a href="講義ノートの図.html#cb224-19"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;segment&quot;</span>, <span class="dt">x=</span><span class="dv">0</span>,<span class="dt">xend=</span><span class="dv">0</span>,<span class="dt">y=</span><span class="kw">dnorm</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">yend=</span><span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb224-20"><a href="講義ノートの図.html#cb224-20"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;segment&quot;</span>, <span class="dt">x=</span><span class="op">-</span><span class="fl">1.96</span>,<span class="dt">xend=</span><span class="op">-</span><span class="fl">1.96</span>,<span class="dt">y=</span><span class="kw">dnorm</span>(<span class="op">-</span><span class="fl">1.96</span>),<span class="dt">yend=</span><span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb224-21"><a href="講義ノートの図.html#cb224-21"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;segment&quot;</span>, <span class="dt">x=</span><span class="fl">1.96</span>,<span class="dt">xend=</span><span class="fl">1.96</span>,<span class="dt">y=</span><span class="kw">dnorm</span>(<span class="fl">1.96</span>),<span class="dt">yend=</span><span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb224-22"><a href="講義ノートの図.html#cb224-22"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x=</span><span class="op">-</span><span class="fl">1.96</span>, <span class="dt">y=</span><span class="op">-</span><span class="fl">0.02</span>, <span class="dt">parse=</span><span class="ot">TRUE</span>,<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;-1.96&quot;</span>)) <span class="op">+</span></span>
+<span id="cb224-23"><a href="講義ノートの図.html#cb224-23"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x=</span><span class="fl">1.96</span>, <span class="dt">y=</span><span class="op">-</span><span class="fl">0.02</span>, <span class="dt">parse=</span><span class="ot">TRUE</span>,<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;1.96&quot;</span>)) <span class="op">+</span></span>
+<span id="cb224-24"><a href="講義ノートの図.html#cb224-24"></a><span class="st">  </span><span class="kw">theme_void</span>()</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-117-1.png" width="672" /></p>
+<p>Figure 10.2</p>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="講義ノートの図.html#cb225-1"></a><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="op">-</span><span class="fl">3.5</span>, <span class="fl">3.5</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb225-2"><a href="講義ノートの図.html#cb225-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x)) <span class="op">+</span></span>
+<span id="cb225-3"><a href="講義ノートの図.html#cb225-3"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, </span>
+<span id="cb225-4"><a href="講義ノートの図.html#cb225-4"></a>                <span class="dt">n =</span> <span class="dv">1000</span>, </span>
+<span id="cb225-5"><a href="講義ノートの図.html#cb225-5"></a>                <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="dv">0</span>,<span class="dt">sd =</span> <span class="dv">1</span>), <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb225-6"><a href="講義ノートの図.html#cb225-6"></a><span class="st">  </span><span class="kw">geom_area</span>(<span class="dt">stat =</span> <span class="st">&#39;function&#39;</span>,</span>
+<span id="cb225-7"><a href="講義ノートの図.html#cb225-7"></a>            <span class="dt">fun =</span> dnorm,</span>
+<span id="cb225-8"><a href="講義ノートの図.html#cb225-8"></a>            <span class="dt">fill =</span> <span class="st">&#39;grey50&#39;</span>,</span>
+<span id="cb225-9"><a href="講義ノートの図.html#cb225-9"></a>            <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="fl">1.645</span>, <span class="fl">3.5</span>),</span>
+<span id="cb225-10"><a href="講義ノートの図.html#cb225-10"></a>            <span class="dt">alpha =</span> <span class="fl">0.3</span>) <span class="op">+</span></span>
+<span id="cb225-11"><a href="講義ノートの図.html#cb225-11"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb225-12"><a href="講義ノートの図.html#cb225-12"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="ot">NULL</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb225-13"><a href="講義ノートの図.html#cb225-13"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="ot">NULL</span>) <span class="op">+</span></span>
+<span id="cb225-14"><a href="講義ノートの図.html#cb225-14"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;segment&quot;</span>, <span class="dt">x=</span><span class="dv">0</span>,<span class="dt">xend=</span><span class="dv">0</span>,<span class="dt">y=</span><span class="kw">dnorm</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">yend=</span><span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb225-15"><a href="講義ノートの図.html#cb225-15"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;segment&quot;</span>, <span class="dt">x=</span><span class="fl">1.645</span>,<span class="dt">xend=</span><span class="fl">1.645</span>,<span class="dt">y=</span><span class="kw">dnorm</span>(<span class="fl">1.645</span>),<span class="dt">yend=</span><span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb225-16"><a href="講義ノートの図.html#cb225-16"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x=</span><span class="fl">1.645</span>, <span class="dt">y=</span><span class="op">-</span><span class="fl">0.02</span>, <span class="dt">parse=</span><span class="ot">TRUE</span>,<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;1.645&quot;</span>)) <span class="op">+</span></span>
+<span id="cb225-17"><a href="講義ノートの図.html#cb225-17"></a><span class="st">  </span><span class="kw">theme_void</span>()</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-118-1.png" width="672" /></p>
+<p>Figure 13.1</p>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="講義ノートの図.html#cb226-1"></a><span class="kw">set.seed</span>(<span class="dv">8931</span>)</span>
+<span id="cb226-2"><a href="講義ノートの図.html#cb226-2"></a>dat &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">x=</span><span class="kw">runif</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">50</span>),</span>
+<span id="cb226-3"><a href="講義ノートの図.html#cb226-3"></a>       <span class="dt">y=</span><span class="kw">rnorm</span>(<span class="dv">100</span>, x <span class="op">+</span><span class="st"> </span><span class="dv">10</span>, <span class="dv">10</span>))</span>
+<span id="cb226-4"><a href="講義ノートの図.html#cb226-4"></a>dat <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb226-5"><a href="講義ノートの図.html#cb226-5"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>x, <span class="dt">y=</span>y)) <span class="op">+</span></span>
+<span id="cb226-6"><a href="講義ノートの図.html#cb226-6"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
+<span id="cb226-7"><a href="講義ノートの図.html#cb226-7"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>, <span class="dt">fill=</span><span class="ot">NA</span>, <span class="dt">lwd=</span><span class="fl">1.5</span>, <span class="dt">fullrange=</span><span class="ot">TRUE</span>) <span class="op">+</span></span>
+<span id="cb226-8"><a href="講義ノートの図.html#cb226-8"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-119-1.png" width="672" /></p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="講義ノートの図.html#cb228-1"></a><span class="kw">summary</span>(<span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, dat))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x, data = dat)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -26.6956  -7.0253  -0.8862   6.0086  21.5698 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  9.86720    2.02106   4.882 4.08e-06 ***
+## x            0.96227    0.06952  13.842  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 10.48 on 98 degrees of freedom
+## Multiple R-squared:  0.6616,	Adjusted R-squared:  0.6582 
+## F-statistic: 191.6 on 1 and 98 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>Figure 13.2</p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="講義ノートの図.html#cb230-1"></a>dat &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">x=</span><span class="kw">runif</span>(<span class="dv">200</span>, <span class="dv">0</span>, <span class="dv">50</span>),</span>
+<span id="cb230-2"><a href="講義ノートの図.html#cb230-2"></a>              <span class="dt">y=</span><span class="kw">rnorm</span>(<span class="dv">200</span>, x <span class="op">+</span><span class="st"> </span><span class="dv">10</span>, <span class="dv">10</span>))</span>
+<span id="cb230-3"><a href="講義ノートの図.html#cb230-3"></a>breaks &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>)</span>
+<span id="cb230-4"><a href="講義ノートの図.html#cb230-4"></a>norm &lt;-<span class="st"> </span><span class="kw">tibble</span>()</span>
+<span id="cb230-5"><a href="講義ノートの図.html#cb230-5"></a><span class="cf">for</span> (t <span class="cf">in</span> breaks) {</span>
+<span id="cb230-6"><a href="講義ノートの図.html#cb230-6"></a>  br =<span class="st"> </span><span class="kw">seq</span>(<span class="kw">qnorm</span>(<span class="fl">0.005</span>,t <span class="op">+</span><span class="st"> </span><span class="dv">10</span>,<span class="dv">10</span>),<span class="kw">qnorm</span>(<span class="fl">0.995</span>,t <span class="op">+</span><span class="st"> </span><span class="dv">10</span>,<span class="dv">10</span>),<span class="dt">length=</span><span class="dv">200</span>)</span>
+<span id="cb230-7"><a href="講義ノートの図.html#cb230-7"></a>  <span class="kw">tibble</span>(<span class="dt">x=</span>t<span class="op">-</span><span class="kw">dnorm</span>(br,t <span class="op">+</span><span class="st"> </span><span class="dv">10</span>,<span class="dv">10</span>)<span class="op">*</span><span class="dv">100</span>,</span>
+<span id="cb230-8"><a href="講義ノートの図.html#cb230-8"></a>         <span class="dt">y=</span>br,</span>
+<span id="cb230-9"><a href="講義ノートの図.html#cb230-9"></a>         <span class="dt">b=</span>t) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb230-10"><a href="講義ノートの図.html#cb230-10"></a><span class="st">    </span><span class="kw">bind_rows</span>(norm,.) -&gt;<span class="st"> </span>norm</span>
+<span id="cb230-11"><a href="講義ノートの図.html#cb230-11"></a>}</span>
+<span id="cb230-12"><a href="講義ノートの図.html#cb230-12"></a>dat <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb230-13"><a href="講義ノートの図.html#cb230-13"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>x, <span class="dt">y=</span>y)) <span class="op">+</span></span>
+<span id="cb230-14"><a href="講義ノートの図.html#cb230-14"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
+<span id="cb230-15"><a href="講義ノートの図.html#cb230-15"></a><span class="st">  </span><span class="kw">geom_path</span>(<span class="dt">data=</span>norm, <span class="kw">aes</span>(x, y, <span class="dt">group=</span>b), <span class="dt">lwd=</span><span class="fl">1.0</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></span>
+<span id="cb230-16"><a href="講義ノートの図.html#cb230-16"></a><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span>breaks, <span class="dt">lty=</span><span class="dv">2</span>) <span class="op">+</span></span>
+<span id="cb230-17"><a href="講義ノートの図.html#cb230-17"></a><span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">intercept =</span> <span class="dv">10</span>, <span class="dt">slope =</span> <span class="dv">1</span>)<span class="op">+</span></span>
+<span id="cb230-18"><a href="講義ノートの図.html#cb230-18"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-120-1.png" width="672" /></p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="回帰分析における推定と検定.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown.pdf", "bookdown.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
