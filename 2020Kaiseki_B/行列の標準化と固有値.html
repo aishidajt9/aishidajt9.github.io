@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>S 7 行列の標準化と固有値 | 2020統計解析演習B資料</title>
+  <meta name="description" content="KGsoc2020秋統計解析演習BのためのR分析資料" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="S 7 行列の標準化と固有値 | 2020統計解析演習B資料" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="KGsoc2020秋統計解析演習BのためのR分析資料" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="S 7 行列の標準化と固有値 | 2020統計解析演習B資料" />
+  
+  <meta name="twitter:description" content="KGsoc2020秋統計解析演習BのためのR分析資料" />
+  
+
+
+
+<meta name="date" content="2020-09-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="ベクトルの1次独立性と行列の階数.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">2020統計解析演習B資料</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> ベクトルと行列</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#問1.1"><i class="fa fa-check"></i><b>1.1</b> 問1.1</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#問1.2"><i class="fa fa-check"></i><b>1.2</b> 問1.2</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#問1.3"><i class="fa fa-check"></i><b>1.3</b> 問1.3</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#問1.4"><i class="fa fa-check"></i><b>1.4</b> 問1.4</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#演習問題1"><i class="fa fa-check"></i><b>1.5</b> 演習問題1</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ベクトルの表現と1次変換.html"><a href="ベクトルの表現と1次変換.html"><i class="fa fa-check"></i><b>2</b> ベクトルの表現と1次変換</a><ul>
+<li class="chapter" data-level="2.1" data-path="ベクトルの表現と1次変換.html"><a href="ベクトルの表現と1次変換.html#p.10の例"><i class="fa fa-check"></i><b>2.1</b> p.10の例</a></li>
+<li class="chapter" data-level="2.2" data-path="ベクトルの表現と1次変換.html"><a href="ベクトルの表現と1次変換.html#問題2.1"><i class="fa fa-check"></i><b>2.2</b> 問題2.1</a></li>
+<li class="chapter" data-level="2.3" data-path="ベクトルの表現と1次変換.html"><a href="ベクトルの表現と1次変換.html#問題2.2"><i class="fa fa-check"></i><b>2.3</b> 問題2.2</a></li>
+<li class="chapter" data-level="2.4" data-path="ベクトルの表現と1次変換.html"><a href="ベクトルの表現と1次変換.html#問題2.3"><i class="fa fa-check"></i><b>2.4</b> 問題2.3</a></li>
+<li class="chapter" data-level="2.5" data-path="ベクトルの表現と1次変換.html"><a href="ベクトルの表現と1次変換.html#問題2.4"><i class="fa fa-check"></i><b>2.5</b> 問題2.4</a></li>
+<li class="chapter" data-level="2.6" data-path="ベクトルの表現と1次変換.html"><a href="ベクトルの表現と1次変換.html#演習問題2"><i class="fa fa-check"></i><b>2.6</b> 演習問題2</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="行列式.html"><a href="行列式.html"><i class="fa fa-check"></i><b>3</b> 行列式</a><ul>
+<li class="chapter" data-level="3.1" data-path="行列式.html"><a href="行列式.html#例題3.1"><i class="fa fa-check"></i><b>3.1</b> 例題3.1</a></li>
+<li class="chapter" data-level="3.2" data-path="行列式.html"><a href="行列式.html#問題3.1"><i class="fa fa-check"></i><b>3.2</b> 問題3.1</a></li>
+<li class="chapter" data-level="3.3" data-path="行列式.html"><a href="行列式.html#問題3.2"><i class="fa fa-check"></i><b>3.3</b> 問題3.2</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="行列式の展開と逆行列.html"><a href="行列式の展開と逆行列.html"><i class="fa fa-check"></i><b>4</b> 行列式の展開と逆行列</a><ul>
+<li class="chapter" data-level="4.1" data-path="行列式の展開と逆行列.html"><a href="行列式の展開と逆行列.html#問題4.2"><i class="fa fa-check"></i><b>4.1</b> 問題4.2</a></li>
+<li class="chapter" data-level="4.2" data-path="行列式の展開と逆行列.html"><a href="行列式の展開と逆行列.html#問題4.5"><i class="fa fa-check"></i><b>4.2</b> 問題4.5</a></li>
+<li class="chapter" data-level="4.3" data-path="行列式の展開と逆行列.html"><a href="行列式の展開と逆行列.html#例題4.4"><i class="fa fa-check"></i><b>4.3</b> 例題4.4</a></li>
+<li class="chapter" data-level="4.4" data-path="行列式の展開と逆行列.html"><a href="行列式の展開と逆行列.html#問題4.6"><i class="fa fa-check"></i><b>4.4</b> 問題4.6</a></li>
+<li class="chapter" data-level="4.5" data-path="行列式の展開と逆行列.html"><a href="行列式の展開と逆行列.html#演習問題4"><i class="fa fa-check"></i><b>4.5</b> 演習問題4</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="連立一次方程式.html"><a href="連立一次方程式.html"><i class="fa fa-check"></i><b>5</b> 連立一次方程式</a><ul>
+<li class="chapter" data-level="5.1" data-path="連立一次方程式.html"><a href="連立一次方程式.html#例題5.1"><i class="fa fa-check"></i><b>5.1</b> 例題5.1</a></li>
+<li class="chapter" data-level="5.2" data-path="連立一次方程式.html"><a href="連立一次方程式.html#問題5.1"><i class="fa fa-check"></i><b>5.2</b> 問題5.1</a></li>
+<li class="chapter" data-level="5.3" data-path="連立一次方程式.html"><a href="連立一次方程式.html#問題5.2"><i class="fa fa-check"></i><b>5.3</b> 問題5.2</a></li>
+<li class="chapter" data-level="5.4" data-path="連立一次方程式.html"><a href="連立一次方程式.html#例題5.3"><i class="fa fa-check"></i><b>5.4</b> 例題5.3</a></li>
+<li class="chapter" data-level="5.5" data-path="連立一次方程式.html"><a href="連立一次方程式.html#問題5.3"><i class="fa fa-check"></i><b>5.5</b> 問題5.3</a></li>
+<li class="chapter" data-level="5.6" data-path="連立一次方程式.html"><a href="連立一次方程式.html#例題5.4"><i class="fa fa-check"></i><b>5.6</b> 例題5.4</a></li>
+<li class="chapter" data-level="5.7" data-path="連立一次方程式.html"><a href="連立一次方程式.html#問題5.4"><i class="fa fa-check"></i><b>5.7</b> 問題5.4</a></li>
+<li class="chapter" data-level="5.8" data-path="連立一次方程式.html"><a href="連立一次方程式.html#演習問題5"><i class="fa fa-check"></i><b>5.8</b> 演習問題5</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ベクトルの1次独立性と行列の階数.html"><a href="ベクトルの1次独立性と行列の階数.html"><i class="fa fa-check"></i><b>6</b> ベクトルの1次独立性と行列の階数"</a><ul>
+<li class="chapter" data-level="6.1" data-path="ベクトルの1次独立性と行列の階数.html"><a href="ベクトルの1次独立性と行列の階数.html#例題6.1"><i class="fa fa-check"></i><b>6.1</b> 例題6.1</a></li>
+<li class="chapter" data-level="6.2" data-path="ベクトルの1次独立性と行列の階数.html"><a href="ベクトルの1次独立性と行列の階数.html#問題6.2"><i class="fa fa-check"></i><b>6.2</b> 問題6.2</a></li>
+<li class="chapter" data-level="6.3" data-path="ベクトルの1次独立性と行列の階数.html"><a href="ベクトルの1次独立性と行列の階数.html#ランク"><i class="fa fa-check"></i><b>6.3</b> ランク</a></li>
+<li class="chapter" data-level="6.4" data-path="ベクトルの1次独立性と行列の階数.html"><a href="ベクトルの1次独立性と行列の階数.html#問題6.3"><i class="fa fa-check"></i><b>6.4</b> 問題6.3</a></li>
+<li class="chapter" data-level="6.5" data-path="ベクトルの1次独立性と行列の階数.html"><a href="ベクトルの1次独立性と行列の階数.html#演習問題6"><i class="fa fa-check"></i><b>6.5</b> 演習問題6</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="行列の標準化と固有値.html"><a href="行列の標準化と固有値.html"><i class="fa fa-check"></i><b>7</b> 行列の標準化と固有値</a><ul>
+<li class="chapter" data-level="7.1" data-path="行列の標準化と固有値.html"><a href="行列の標準化と固有値.html#例題7.1-1"><i class="fa fa-check"></i><b>7.1</b> 例題7.1 (1)</a></li>
+<li class="chapter" data-level="7.2" data-path="行列の標準化と固有値.html"><a href="行列の標準化と固有値.html#例題7.1-2"><i class="fa fa-check"></i><b>7.2</b> 例題7.1 (2)</a></li>
+<li class="chapter" data-level="7.3" data-path="行列の標準化と固有値.html"><a href="行列の標準化と固有値.html#問題7.1"><i class="fa fa-check"></i><b>7.3</b> 問題7.1</a></li>
+<li class="chapter" data-level="7.4" data-path="行列の標準化と固有値.html"><a href="行列の標準化と固有値.html#問題7.2"><i class="fa fa-check"></i><b>7.4</b> 問題7.2</a></li>
+<li class="chapter" data-level="7.5" data-path="行列の標準化と固有値.html"><a href="行列の標準化と固有値.html#問題7.3"><i class="fa fa-check"></i><b>7.5</b> 問題7.3</a></li>
+<li class="chapter" data-level="7.6" data-path="行列の標準化と固有値.html"><a href="行列の標準化と固有値.html#問題7.4"><i class="fa fa-check"></i><b>7.6</b> 問題7.4</a></li>
+<li class="chapter" data-level="7.7" data-path="行列の標準化と固有値.html"><a href="行列の標準化と固有値.html#演習問題7"><i class="fa fa-check"></i><b>7.7</b> 演習問題7</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">2020統計解析演習B資料</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="行列の標準化と固有値" class="section level1">
+<h1><span class="header-section-number">S 7</span> 行列の標準化と固有値</h1>
+<div id="例題7.1-1" class="section level2">
+<h2><span class="header-section-number">7.1</span> 例題7.1 (1)</h2>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="行列の標準化と固有値.html#cb259-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb259-2"><a href="行列の標準化と固有値.html#cb259-2"></a></span>
+<span id="cb259-3"><a href="行列の標準化と固有値.html#cb259-3"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">1</span>),<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb259-4"><a href="行列の標準化と固有値.html#cb259-4"></a><span class="kw">eigen</span>(A)</span></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1]  5 -1
+## 
+## $vectors
+##           [,1]       [,2]
+## [1,] 0.7071068 -0.4472136
+## [2,] 0.7071068  0.8944272</code></pre>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="行列の標準化と固有値.html#cb261-1"></a>lambda &lt;-<span class="st"> </span><span class="kw">eigen</span>(A)<span class="op">$</span>values</span>
+<span id="cb261-2"><a href="行列の標準化と固有値.html#cb261-2"></a>P &lt;-<span class="st"> </span><span class="kw">eigen</span>(A)<span class="op">$</span>vectors</span>
+<span id="cb261-3"><a href="行列の標準化と固有値.html#cb261-3"></a><span class="kw">round</span>(<span class="kw">solve</span>(P) <span class="op">%*%</span><span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span>P, <span class="dt">digits =</span> <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    5    0
+## [2,]    0   -1</code></pre>
+<p>2次元平面上のベクトルとして表現．</p>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="行列の標準化と固有値.html#cb263-1"></a>eigenvec &lt;-<span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>P</span>
+<span id="cb263-2"><a href="行列の標準化と固有値.html#cb263-2"></a>cardesian &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dt">x =</span> <span class="kw">seq</span>(<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">1</span>), <span class="dt">y =</span> <span class="kw">seq</span>(<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">1</span>))</span>
+<span id="cb263-3"><a href="行列の標準化と固有値.html#cb263-3"></a>trans &lt;-<span class="st"> </span>cardesian</span>
+<span id="cb263-4"><a href="行列の標準化と固有値.html#cb263-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(cardesian)) {</span>
+<span id="cb263-5"><a href="行列の標準化と固有値.html#cb263-5"></a>  trans[i,]&lt;-A <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(<span class="kw">as.matrix</span>(cardesian[i,]))</span>
+<span id="cb263-6"><a href="行列の標準化と固有値.html#cb263-6"></a>}</span>
+<span id="cb263-7"><a href="行列の標準化と固有値.html#cb263-7"></a>trans_eigen &lt;-<span class="st"> </span><span class="kw">rbind</span>(lambda,lambda) <span class="op">*</span><span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span>eigenvec</span>
+<span id="cb263-8"><a href="行列の標準化と固有値.html#cb263-8"></a><span class="kw">bind_rows</span>(<span class="st">&quot;Original&quot;</span> =<span class="st"> </span>cardesian,</span>
+<span id="cb263-9"><a href="行列の標準化と固有値.html#cb263-9"></a>          <span class="st">&quot;Transformed&quot;</span> =<span class="st"> </span>trans,</span>
+<span id="cb263-10"><a href="行列の標準化と固有値.html#cb263-10"></a>          <span class="dt">.id =</span> <span class="st">&quot;type&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb263-11"><a href="行列の標準化と固有値.html#cb263-11"></a><span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb263-12"><a href="行列の標準化と固有値.html#cb263-12"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y,<span class="dt">color=</span>type)) <span class="op">+</span></span>
+<span id="cb263-13"><a href="行列の標準化と固有値.html#cb263-13"></a><span class="st">  </span><span class="kw">geom_segment</span>(</span>
+<span id="cb263-14"><a href="行列の標準化と固有値.html#cb263-14"></a>    <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">0</span>,</span>
+<span id="cb263-15"><a href="行列の標準化と固有値.html#cb263-15"></a>        <span class="dt">xend =</span> eigenvec[<span class="dv">1</span>,<span class="dv">1</span>],</span>
+<span id="cb263-16"><a href="行列の標準化と固有値.html#cb263-16"></a>        <span class="dt">yend =</span> eigenvec[<span class="dv">2</span>,<span class="dv">1</span>]),</span>
+<span id="cb263-17"><a href="行列の標準化と固有値.html#cb263-17"></a>    <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="dv">1</span>, <span class="st">&quot;mm&quot;</span>)),</span>
+<span id="cb263-18"><a href="行列の標準化と固有値.html#cb263-18"></a>    <span class="dt">color =</span> <span class="st">&quot;red&quot;</span></span>
+<span id="cb263-19"><a href="行列の標準化と固有値.html#cb263-19"></a>  ) <span class="op">+</span></span>
+<span id="cb263-20"><a href="行列の標準化と固有値.html#cb263-20"></a><span class="st">  </span><span class="kw">geom_segment</span>(</span>
+<span id="cb263-21"><a href="行列の標準化と固有値.html#cb263-21"></a>    <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">0</span>,</span>
+<span id="cb263-22"><a href="行列の標準化と固有値.html#cb263-22"></a>        <span class="dt">xend =</span> eigenvec[<span class="dv">1</span>,<span class="dv">2</span>],</span>
+<span id="cb263-23"><a href="行列の標準化と固有値.html#cb263-23"></a>        <span class="dt">yend =</span> eigenvec[<span class="dv">2</span>,<span class="dv">2</span>]),</span>
+<span id="cb263-24"><a href="行列の標準化と固有値.html#cb263-24"></a>    <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="dv">1</span>, <span class="st">&quot;mm&quot;</span>)),</span>
+<span id="cb263-25"><a href="行列の標準化と固有値.html#cb263-25"></a>    <span class="dt">color =</span> <span class="st">&quot;red&quot;</span></span>
+<span id="cb263-26"><a href="行列の標準化と固有値.html#cb263-26"></a>  ) <span class="op">+</span></span>
+<span id="cb263-27"><a href="行列の標準化と固有値.html#cb263-27"></a><span class="st">  </span><span class="kw">geom_segment</span>(</span>
+<span id="cb263-28"><a href="行列の標準化と固有値.html#cb263-28"></a>    <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">0</span>,</span>
+<span id="cb263-29"><a href="行列の標準化と固有値.html#cb263-29"></a>        <span class="dt">xend =</span> trans_eigen[<span class="dv">1</span>,<span class="dv">1</span>],</span>
+<span id="cb263-30"><a href="行列の標準化と固有値.html#cb263-30"></a>        <span class="dt">yend =</span> trans_eigen[<span class="dv">2</span>,<span class="dv">1</span>]),</span>
+<span id="cb263-31"><a href="行列の標準化と固有値.html#cb263-31"></a>    <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="dv">1</span>, <span class="st">&quot;mm&quot;</span>)),</span>
+<span id="cb263-32"><a href="行列の標準化と固有値.html#cb263-32"></a>    <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span></span>
+<span id="cb263-33"><a href="行列の標準化と固有値.html#cb263-33"></a>  ) <span class="op">+</span></span>
+<span id="cb263-34"><a href="行列の標準化と固有値.html#cb263-34"></a><span class="st">  </span><span class="kw">geom_segment</span>(</span>
+<span id="cb263-35"><a href="行列の標準化と固有値.html#cb263-35"></a>    <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">0</span>,</span>
+<span id="cb263-36"><a href="行列の標準化と固有値.html#cb263-36"></a>        <span class="dt">xend =</span> trans_eigen[<span class="dv">1</span>,<span class="dv">2</span>],</span>
+<span id="cb263-37"><a href="行列の標準化と固有値.html#cb263-37"></a>        <span class="dt">yend =</span> trans_eigen[<span class="dv">2</span>,<span class="dv">2</span>]),</span>
+<span id="cb263-38"><a href="行列の標準化と固有値.html#cb263-38"></a>    <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="dv">1</span>, <span class="st">&quot;mm&quot;</span>)),</span>
+<span id="cb263-39"><a href="行列の標準化と固有値.html#cb263-39"></a>    <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span></span>
+<span id="cb263-40"><a href="行列の標準化と固有値.html#cb263-40"></a>  ) <span class="op">+</span></span>
+<span id="cb263-41"><a href="行列の標準化と固有値.html#cb263-41"></a><span class="st">  </span><span class="kw">coord_fixed</span>() <span class="op">+</span></span>
+<span id="cb263-42"><a href="行列の標準化と固有値.html#cb263-42"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
+<p>斜交軸で表現．</p>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="行列の標準化と固有値.html#cb264-1"></a>cardesian &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dt">x =</span> <span class="kw">seq</span>(<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">1</span>), <span class="dt">y =</span> <span class="kw">seq</span>(<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">1</span>))</span>
+<span id="cb264-2"><a href="行列の標準化と固有値.html#cb264-2"></a>cardesianP &lt;-<span class="st"> </span>cardesian</span>
+<span id="cb264-3"><a href="行列の標準化と固有値.html#cb264-3"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(cardesian)) {</span>
+<span id="cb264-4"><a href="行列の標準化と固有値.html#cb264-4"></a>  cardesianP[i,]&lt;-<span class="st"> </span>P <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(<span class="kw">as.matrix</span>(cardesian[i,]))</span>
+<span id="cb264-5"><a href="行列の標準化と固有値.html#cb264-5"></a>}</span>
+<span id="cb264-6"><a href="行列の標準化と固有値.html#cb264-6"></a>trans &lt;-<span class="st"> </span>cardesianP</span>
+<span id="cb264-7"><a href="行列の標準化と固有値.html#cb264-7"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(cardesianP)) {</span>
+<span id="cb264-8"><a href="行列の標準化と固有値.html#cb264-8"></a>  trans[i,]&lt;-<span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(<span class="kw">as.matrix</span>(cardesianP[i,]))</span>
+<span id="cb264-9"><a href="行列の標準化と固有値.html#cb264-9"></a>}</span>
+<span id="cb264-10"><a href="行列の標準化と固有値.html#cb264-10"></a>trans_eigen &lt;-<span class="st"> </span><span class="kw">rbind</span>(lambda,lambda) <span class="op">*</span><span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span>eigenvec</span>
+<span id="cb264-11"><a href="行列の標準化と固有値.html#cb264-11"></a><span class="kw">bind_rows</span>(<span class="st">&quot;Original&quot;</span> =<span class="st"> </span>cardesianP,</span>
+<span id="cb264-12"><a href="行列の標準化と固有値.html#cb264-12"></a>          <span class="st">&quot;Transformed&quot;</span> =<span class="st"> </span>trans,</span>
+<span id="cb264-13"><a href="行列の標準化と固有値.html#cb264-13"></a>          <span class="dt">.id =</span> <span class="st">&quot;type&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb264-14"><a href="行列の標準化と固有値.html#cb264-14"></a><span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb264-15"><a href="行列の標準化と固有値.html#cb264-15"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y,<span class="dt">color=</span>type)) <span class="op">+</span></span>
+<span id="cb264-16"><a href="行列の標準化と固有値.html#cb264-16"></a><span class="st">  </span><span class="kw">geom_segment</span>(</span>
+<span id="cb264-17"><a href="行列の標準化と固有値.html#cb264-17"></a>    <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">0</span>,</span>
+<span id="cb264-18"><a href="行列の標準化と固有値.html#cb264-18"></a>        <span class="dt">xend =</span> eigenvec[<span class="dv">1</span>,<span class="dv">1</span>],</span>
+<span id="cb264-19"><a href="行列の標準化と固有値.html#cb264-19"></a>        <span class="dt">yend =</span> eigenvec[<span class="dv">2</span>,<span class="dv">1</span>]),</span>
+<span id="cb264-20"><a href="行列の標準化と固有値.html#cb264-20"></a>    <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="dv">1</span>, <span class="st">&quot;mm&quot;</span>)),</span>
+<span id="cb264-21"><a href="行列の標準化と固有値.html#cb264-21"></a>    <span class="dt">color =</span> <span class="st">&quot;red&quot;</span></span>
+<span id="cb264-22"><a href="行列の標準化と固有値.html#cb264-22"></a>  ) <span class="op">+</span></span>
+<span id="cb264-23"><a href="行列の標準化と固有値.html#cb264-23"></a><span class="st">  </span><span class="kw">geom_segment</span>(</span>
+<span id="cb264-24"><a href="行列の標準化と固有値.html#cb264-24"></a>    <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">0</span>,</span>
+<span id="cb264-25"><a href="行列の標準化と固有値.html#cb264-25"></a>        <span class="dt">xend =</span> eigenvec[<span class="dv">1</span>,<span class="dv">2</span>],</span>
+<span id="cb264-26"><a href="行列の標準化と固有値.html#cb264-26"></a>        <span class="dt">yend =</span> eigenvec[<span class="dv">2</span>,<span class="dv">2</span>]),</span>
+<span id="cb264-27"><a href="行列の標準化と固有値.html#cb264-27"></a>    <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="dv">1</span>, <span class="st">&quot;mm&quot;</span>)),</span>
+<span id="cb264-28"><a href="行列の標準化と固有値.html#cb264-28"></a>    <span class="dt">color =</span> <span class="st">&quot;red&quot;</span></span>
+<span id="cb264-29"><a href="行列の標準化と固有値.html#cb264-29"></a>  ) <span class="op">+</span></span>
+<span id="cb264-30"><a href="行列の標準化と固有値.html#cb264-30"></a><span class="st">  </span><span class="kw">geom_segment</span>(</span>
+<span id="cb264-31"><a href="行列の標準化と固有値.html#cb264-31"></a>    <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">0</span>,</span>
+<span id="cb264-32"><a href="行列の標準化と固有値.html#cb264-32"></a>        <span class="dt">xend =</span> trans_eigen[<span class="dv">1</span>,<span class="dv">1</span>],</span>
+<span id="cb264-33"><a href="行列の標準化と固有値.html#cb264-33"></a>        <span class="dt">yend =</span> trans_eigen[<span class="dv">2</span>,<span class="dv">1</span>]),</span>
+<span id="cb264-34"><a href="行列の標準化と固有値.html#cb264-34"></a>    <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="dv">1</span>, <span class="st">&quot;mm&quot;</span>)),</span>
+<span id="cb264-35"><a href="行列の標準化と固有値.html#cb264-35"></a>    <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span></span>
+<span id="cb264-36"><a href="行列の標準化と固有値.html#cb264-36"></a>  ) <span class="op">+</span></span>
+<span id="cb264-37"><a href="行列の標準化と固有値.html#cb264-37"></a><span class="st">  </span><span class="kw">geom_segment</span>(</span>
+<span id="cb264-38"><a href="行列の標準化と固有値.html#cb264-38"></a>    <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">0</span>,</span>
+<span id="cb264-39"><a href="行列の標準化と固有値.html#cb264-39"></a>        <span class="dt">xend =</span> trans_eigen[<span class="dv">1</span>,<span class="dv">2</span>],</span>
+<span id="cb264-40"><a href="行列の標準化と固有値.html#cb264-40"></a>        <span class="dt">yend =</span> trans_eigen[<span class="dv">2</span>,<span class="dv">2</span>]),</span>
+<span id="cb264-41"><a href="行列の標準化と固有値.html#cb264-41"></a>    <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="dv">1</span>, <span class="st">&quot;mm&quot;</span>)),</span>
+<span id="cb264-42"><a href="行列の標準化と固有値.html#cb264-42"></a>    <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span></span>
+<span id="cb264-43"><a href="行列の標準化と固有値.html#cb264-43"></a>  ) <span class="op">+</span></span>
+<span id="cb264-44"><a href="行列の標準化と固有値.html#cb264-44"></a><span class="st">  </span><span class="kw">coord_fixed</span>() <span class="op">+</span></span>
+<span id="cb264-45"><a href="行列の標準化と固有値.html#cb264-45"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
+<p>対角化でととのえる．</p>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="行列の標準化と固有値.html#cb265-1"></a>trans &lt;-<span class="st"> </span>cardesian</span>
+<span id="cb265-2"><a href="行列の標準化と固有値.html#cb265-2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(cardesian)) {</span>
+<span id="cb265-3"><a href="行列の標準化と固有値.html#cb265-3"></a>  trans[i,]&lt;-A <span class="op">%*%</span><span class="st"> </span>P <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(<span class="kw">as.matrix</span>(cardesian[i,]))</span>
+<span id="cb265-4"><a href="行列の標準化と固有値.html#cb265-4"></a>}</span>
+<span id="cb265-5"><a href="行列の標準化と固有値.html#cb265-5"></a><span class="kw">bind_rows</span>(<span class="st">&quot;Original&quot;</span> =<span class="st"> </span>cardesian,</span>
+<span id="cb265-6"><a href="行列の標準化と固有値.html#cb265-6"></a>          <span class="st">&quot;Transformed&quot;</span> =<span class="st"> </span>trans,</span>
+<span id="cb265-7"><a href="行列の標準化と固有値.html#cb265-7"></a>          <span class="dt">.id =</span> <span class="st">&quot;type&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb265-8"><a href="行列の標準化と固有値.html#cb265-8"></a><span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb265-9"><a href="行列の標準化と固有値.html#cb265-9"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y,<span class="dt">color=</span>type)) <span class="op">+</span></span>
+<span id="cb265-10"><a href="行列の標準化と固有値.html#cb265-10"></a><span class="st">  </span><span class="kw">coord_fixed</span>() <span class="op">+</span></span>
+<span id="cb265-11"><a href="行列の標準化と固有値.html#cb265-11"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="行列の標準化と固有値.html#cb266-1"></a>trans &lt;-<span class="st"> </span>cardesian</span>
+<span id="cb266-2"><a href="行列の標準化と固有値.html#cb266-2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(cardesian)) {</span>
+<span id="cb266-3"><a href="行列の標準化と固有値.html#cb266-3"></a>  trans[i,] &lt;-<span class="st"> </span><span class="kw">solve</span>(P) <span class="op">%*%</span><span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span>P <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(<span class="kw">as.matrix</span>(cardesian[i,]))</span>
+<span id="cb266-4"><a href="行列の標準化と固有値.html#cb266-4"></a>}</span>
+<span id="cb266-5"><a href="行列の標準化と固有値.html#cb266-5"></a><span class="kw">bind_rows</span>(<span class="st">&quot;Original&quot;</span> =<span class="st"> </span>cardesian,</span>
+<span id="cb266-6"><a href="行列の標準化と固有値.html#cb266-6"></a>          <span class="st">&quot;Transformed&quot;</span> =<span class="st"> </span>trans,</span>
+<span id="cb266-7"><a href="行列の標準化と固有値.html#cb266-7"></a>          <span class="dt">.id =</span> <span class="st">&quot;type&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb266-8"><a href="行列の標準化と固有値.html#cb266-8"></a><span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb266-9"><a href="行列の標準化と固有値.html#cb266-9"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y,<span class="dt">color=</span>type)) <span class="op">+</span></span>
+<span id="cb266-10"><a href="行列の標準化と固有値.html#cb266-10"></a><span class="st">  </span><span class="kw">coord_fixed</span>() <span class="op">+</span></span>
+<span id="cb266-11"><a href="行列の標準化と固有値.html#cb266-11"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-63-2.png" width="672" /></p>
+</div>
+<div id="例題7.1-2" class="section level2">
+<h2><span class="header-section-number">7.2</span> 例題7.1 (2)</h2>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="行列の標準化と固有値.html#cb267-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">5</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">3</span>),<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb267-2"><a href="行列の標準化と固有値.html#cb267-2"></a><span class="kw">eigen</span>(A)</span></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1] 4 4
+## 
+## $vectors
+##            [,1]       [,2]
+## [1,]  0.7071068 -0.7071068
+## [2,] -0.7071068  0.7071068</code></pre>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="行列の標準化と固有値.html#cb269-1"></a>lambda &lt;-<span class="st"> </span><span class="kw">eigen</span>(A)<span class="op">$</span>values</span>
+<span id="cb269-2"><a href="行列の標準化と固有値.html#cb269-2"></a>P &lt;-<span class="st"> </span><span class="kw">eigen</span>(A)<span class="op">$</span>vectors</span>
+<span id="cb269-3"><a href="行列の標準化と固有値.html#cb269-3"></a><span class="kw">det</span>(P)</span></code></pre></div>
+<pre><code>## [1] 4.710277e-16</code></pre>
+<p><span class="math inline">\(det(P) \approx 0\)</span>なので本来は逆行列が求められないはずだが，むりやり逆行列が求められ対角化できてしまう．正規化における誤差のせい？【要確認】
+とりあえずやってみる．</p>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="行列の標準化と固有値.html#cb271-1"></a><span class="kw">round</span>(<span class="kw">solve</span>(P) <span class="op">%*%</span><span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span>P, <span class="dt">digits =</span> <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    4    0
+## [2,]    0    4</code></pre>
+<p>2次元平面上のベクトルとして表現．</p>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="行列の標準化と固有値.html#cb273-1"></a>eigenvec &lt;-<span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>P</span>
+<span id="cb273-2"><a href="行列の標準化と固有値.html#cb273-2"></a>cardesian &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dt">x =</span> <span class="kw">seq</span>(<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">1</span>), <span class="dt">y =</span> <span class="kw">seq</span>(<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">1</span>))</span>
+<span id="cb273-3"><a href="行列の標準化と固有値.html#cb273-3"></a>trans &lt;-<span class="st"> </span>cardesian</span>
+<span id="cb273-4"><a href="行列の標準化と固有値.html#cb273-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(cardesian)) {</span>
+<span id="cb273-5"><a href="行列の標準化と固有値.html#cb273-5"></a>  trans[i,]&lt;-A <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(<span class="kw">as.matrix</span>(cardesian[i,]))</span>
+<span id="cb273-6"><a href="行列の標準化と固有値.html#cb273-6"></a>}</span>
+<span id="cb273-7"><a href="行列の標準化と固有値.html#cb273-7"></a>trans_eigen &lt;-<span class="st"> </span><span class="kw">rbind</span>(lambda,lambda) <span class="op">*</span><span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span>eigenvec</span>
+<span id="cb273-8"><a href="行列の標準化と固有値.html#cb273-8"></a><span class="kw">bind_rows</span>(<span class="st">&quot;Original&quot;</span> =<span class="st"> </span>cardesian,</span>
+<span id="cb273-9"><a href="行列の標準化と固有値.html#cb273-9"></a>          <span class="st">&quot;Transformed&quot;</span> =<span class="st"> </span>trans,</span>
+<span id="cb273-10"><a href="行列の標準化と固有値.html#cb273-10"></a>          <span class="dt">.id =</span> <span class="st">&quot;type&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb273-11"><a href="行列の標準化と固有値.html#cb273-11"></a><span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb273-12"><a href="行列の標準化と固有値.html#cb273-12"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y,<span class="dt">color=</span>type)) <span class="op">+</span></span>
+<span id="cb273-13"><a href="行列の標準化と固有値.html#cb273-13"></a><span class="st">  </span><span class="kw">geom_segment</span>(</span>
+<span id="cb273-14"><a href="行列の標準化と固有値.html#cb273-14"></a>    <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">0</span>,</span>
+<span id="cb273-15"><a href="行列の標準化と固有値.html#cb273-15"></a>        <span class="dt">xend =</span> eigenvec[<span class="dv">1</span>,<span class="dv">1</span>],</span>
+<span id="cb273-16"><a href="行列の標準化と固有値.html#cb273-16"></a>        <span class="dt">yend =</span> eigenvec[<span class="dv">2</span>,<span class="dv">1</span>]),</span>
+<span id="cb273-17"><a href="行列の標準化と固有値.html#cb273-17"></a>    <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="dv">1</span>, <span class="st">&quot;mm&quot;</span>)),</span>
+<span id="cb273-18"><a href="行列の標準化と固有値.html#cb273-18"></a>    <span class="dt">color =</span> <span class="st">&quot;red&quot;</span></span>
+<span id="cb273-19"><a href="行列の標準化と固有値.html#cb273-19"></a>  ) <span class="op">+</span></span>
+<span id="cb273-20"><a href="行列の標準化と固有値.html#cb273-20"></a><span class="st">  </span><span class="kw">geom_segment</span>(</span>
+<span id="cb273-21"><a href="行列の標準化と固有値.html#cb273-21"></a>    <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">0</span>,</span>
+<span id="cb273-22"><a href="行列の標準化と固有値.html#cb273-22"></a>        <span class="dt">xend =</span> eigenvec[<span class="dv">1</span>,<span class="dv">2</span>],</span>
+<span id="cb273-23"><a href="行列の標準化と固有値.html#cb273-23"></a>        <span class="dt">yend =</span> eigenvec[<span class="dv">2</span>,<span class="dv">2</span>]),</span>
+<span id="cb273-24"><a href="行列の標準化と固有値.html#cb273-24"></a>    <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="dv">1</span>, <span class="st">&quot;mm&quot;</span>)),</span>
+<span id="cb273-25"><a href="行列の標準化と固有値.html#cb273-25"></a>    <span class="dt">color =</span> <span class="st">&quot;red&quot;</span></span>
+<span id="cb273-26"><a href="行列の標準化と固有値.html#cb273-26"></a>  ) <span class="op">+</span></span>
+<span id="cb273-27"><a href="行列の標準化と固有値.html#cb273-27"></a><span class="st">  </span><span class="kw">geom_segment</span>(</span>
+<span id="cb273-28"><a href="行列の標準化と固有値.html#cb273-28"></a>    <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">0</span>,</span>
+<span id="cb273-29"><a href="行列の標準化と固有値.html#cb273-29"></a>        <span class="dt">xend =</span> trans_eigen[<span class="dv">1</span>,<span class="dv">1</span>],</span>
+<span id="cb273-30"><a href="行列の標準化と固有値.html#cb273-30"></a>        <span class="dt">yend =</span> trans_eigen[<span class="dv">2</span>,<span class="dv">1</span>]),</span>
+<span id="cb273-31"><a href="行列の標準化と固有値.html#cb273-31"></a>    <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="dv">1</span>, <span class="st">&quot;mm&quot;</span>)),</span>
+<span id="cb273-32"><a href="行列の標準化と固有値.html#cb273-32"></a>    <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span></span>
+<span id="cb273-33"><a href="行列の標準化と固有値.html#cb273-33"></a>  ) <span class="op">+</span></span>
+<span id="cb273-34"><a href="行列の標準化と固有値.html#cb273-34"></a><span class="st">  </span><span class="kw">geom_segment</span>(</span>
+<span id="cb273-35"><a href="行列の標準化と固有値.html#cb273-35"></a>    <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">0</span>,</span>
+<span id="cb273-36"><a href="行列の標準化と固有値.html#cb273-36"></a>        <span class="dt">xend =</span> trans_eigen[<span class="dv">1</span>,<span class="dv">2</span>],</span>
+<span id="cb273-37"><a href="行列の標準化と固有値.html#cb273-37"></a>        <span class="dt">yend =</span> trans_eigen[<span class="dv">2</span>,<span class="dv">2</span>]),</span>
+<span id="cb273-38"><a href="行列の標準化と固有値.html#cb273-38"></a>    <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="dv">1</span>, <span class="st">&quot;mm&quot;</span>)),</span>
+<span id="cb273-39"><a href="行列の標準化と固有値.html#cb273-39"></a>    <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span></span>
+<span id="cb273-40"><a href="行列の標準化と固有値.html#cb273-40"></a>  ) <span class="op">+</span></span>
+<span id="cb273-41"><a href="行列の標準化と固有値.html#cb273-41"></a><span class="st">  </span><span class="kw">coord_fixed</span>() <span class="op">+</span></span>
+<span id="cb273-42"><a href="行列の標準化と固有値.html#cb273-42"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
+<p>斜交軸で表現．</p>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="行列の標準化と固有値.html#cb274-1"></a>cardesian &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dt">x =</span> <span class="kw">seq</span>(<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">1</span>), <span class="dt">y =</span> <span class="kw">seq</span>(<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">1</span>))</span>
+<span id="cb274-2"><a href="行列の標準化と固有値.html#cb274-2"></a>cardesianP &lt;-<span class="st"> </span>cardesian</span>
+<span id="cb274-3"><a href="行列の標準化と固有値.html#cb274-3"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(cardesian)) {</span>
+<span id="cb274-4"><a href="行列の標準化と固有値.html#cb274-4"></a>  cardesianP[i,]&lt;-<span class="st"> </span>P <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(<span class="kw">as.matrix</span>(cardesian[i,]))</span>
+<span id="cb274-5"><a href="行列の標準化と固有値.html#cb274-5"></a>}</span>
+<span id="cb274-6"><a href="行列の標準化と固有値.html#cb274-6"></a>trans &lt;-<span class="st"> </span>cardesianP</span>
+<span id="cb274-7"><a href="行列の標準化と固有値.html#cb274-7"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(cardesianP)) {</span>
+<span id="cb274-8"><a href="行列の標準化と固有値.html#cb274-8"></a>  trans[i,]&lt;-<span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(<span class="kw">as.matrix</span>(cardesianP[i,]))</span>
+<span id="cb274-9"><a href="行列の標準化と固有値.html#cb274-9"></a>}</span>
+<span id="cb274-10"><a href="行列の標準化と固有値.html#cb274-10"></a>trans_eigen &lt;-<span class="st"> </span><span class="kw">rbind</span>(lambda,lambda) <span class="op">*</span><span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span>eigenvec</span>
+<span id="cb274-11"><a href="行列の標準化と固有値.html#cb274-11"></a><span class="kw">bind_rows</span>(<span class="st">&quot;Original&quot;</span> =<span class="st"> </span>cardesianP,</span>
+<span id="cb274-12"><a href="行列の標準化と固有値.html#cb274-12"></a>          <span class="st">&quot;Transformed&quot;</span> =<span class="st"> </span>trans,</span>
+<span id="cb274-13"><a href="行列の標準化と固有値.html#cb274-13"></a>          <span class="dt">.id =</span> <span class="st">&quot;type&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb274-14"><a href="行列の標準化と固有値.html#cb274-14"></a><span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb274-15"><a href="行列の標準化と固有値.html#cb274-15"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y,<span class="dt">color=</span>type)) <span class="op">+</span></span>
+<span id="cb274-16"><a href="行列の標準化と固有値.html#cb274-16"></a><span class="st">  </span><span class="kw">geom_segment</span>(</span>
+<span id="cb274-17"><a href="行列の標準化と固有値.html#cb274-17"></a>    <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">0</span>,</span>
+<span id="cb274-18"><a href="行列の標準化と固有値.html#cb274-18"></a>        <span class="dt">xend =</span> eigenvec[<span class="dv">1</span>,<span class="dv">1</span>],</span>
+<span id="cb274-19"><a href="行列の標準化と固有値.html#cb274-19"></a>        <span class="dt">yend =</span> eigenvec[<span class="dv">2</span>,<span class="dv">1</span>]),</span>
+<span id="cb274-20"><a href="行列の標準化と固有値.html#cb274-20"></a>    <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="dv">1</span>, <span class="st">&quot;mm&quot;</span>)),</span>
+<span id="cb274-21"><a href="行列の標準化と固有値.html#cb274-21"></a>    <span class="dt">color =</span> <span class="st">&quot;red&quot;</span></span>
+<span id="cb274-22"><a href="行列の標準化と固有値.html#cb274-22"></a>  ) <span class="op">+</span></span>
+<span id="cb274-23"><a href="行列の標準化と固有値.html#cb274-23"></a><span class="st">  </span><span class="kw">geom_segment</span>(</span>
+<span id="cb274-24"><a href="行列の標準化と固有値.html#cb274-24"></a>    <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">0</span>,</span>
+<span id="cb274-25"><a href="行列の標準化と固有値.html#cb274-25"></a>        <span class="dt">xend =</span> eigenvec[<span class="dv">1</span>,<span class="dv">2</span>],</span>
+<span id="cb274-26"><a href="行列の標準化と固有値.html#cb274-26"></a>        <span class="dt">yend =</span> eigenvec[<span class="dv">2</span>,<span class="dv">2</span>]),</span>
+<span id="cb274-27"><a href="行列の標準化と固有値.html#cb274-27"></a>    <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="dv">1</span>, <span class="st">&quot;mm&quot;</span>)),</span>
+<span id="cb274-28"><a href="行列の標準化と固有値.html#cb274-28"></a>    <span class="dt">color =</span> <span class="st">&quot;red&quot;</span></span>
+<span id="cb274-29"><a href="行列の標準化と固有値.html#cb274-29"></a>  ) <span class="op">+</span></span>
+<span id="cb274-30"><a href="行列の標準化と固有値.html#cb274-30"></a><span class="st">  </span><span class="kw">geom_segment</span>(</span>
+<span id="cb274-31"><a href="行列の標準化と固有値.html#cb274-31"></a>    <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">0</span>,</span>
+<span id="cb274-32"><a href="行列の標準化と固有値.html#cb274-32"></a>        <span class="dt">xend =</span> trans_eigen[<span class="dv">1</span>,<span class="dv">1</span>],</span>
+<span id="cb274-33"><a href="行列の標準化と固有値.html#cb274-33"></a>        <span class="dt">yend =</span> trans_eigen[<span class="dv">2</span>,<span class="dv">1</span>]),</span>
+<span id="cb274-34"><a href="行列の標準化と固有値.html#cb274-34"></a>    <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="dv">1</span>, <span class="st">&quot;mm&quot;</span>)),</span>
+<span id="cb274-35"><a href="行列の標準化と固有値.html#cb274-35"></a>    <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span></span>
+<span id="cb274-36"><a href="行列の標準化と固有値.html#cb274-36"></a>  ) <span class="op">+</span></span>
+<span id="cb274-37"><a href="行列の標準化と固有値.html#cb274-37"></a><span class="st">  </span><span class="kw">geom_segment</span>(</span>
+<span id="cb274-38"><a href="行列の標準化と固有値.html#cb274-38"></a>    <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">0</span>,</span>
+<span id="cb274-39"><a href="行列の標準化と固有値.html#cb274-39"></a>        <span class="dt">xend =</span> trans_eigen[<span class="dv">1</span>,<span class="dv">2</span>],</span>
+<span id="cb274-40"><a href="行列の標準化と固有値.html#cb274-40"></a>        <span class="dt">yend =</span> trans_eigen[<span class="dv">2</span>,<span class="dv">2</span>]),</span>
+<span id="cb274-41"><a href="行列の標準化と固有値.html#cb274-41"></a>    <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="dv">1</span>, <span class="st">&quot;mm&quot;</span>)),</span>
+<span id="cb274-42"><a href="行列の標準化と固有値.html#cb274-42"></a>    <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span></span>
+<span id="cb274-43"><a href="行列の標準化と固有値.html#cb274-43"></a>  ) <span class="op">+</span></span>
+<span id="cb274-44"><a href="行列の標準化と固有値.html#cb274-44"></a><span class="st">  </span><span class="kw">coord_fixed</span>() <span class="op">+</span></span>
+<span id="cb274-45"><a href="行列の標準化と固有値.html#cb274-45"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-67-1.png" width="672" /></p>
+<p>対角化でととのえる．</p>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="行列の標準化と固有値.html#cb275-1"></a>trans &lt;-<span class="st"> </span>cardesian</span>
+<span id="cb275-2"><a href="行列の標準化と固有値.html#cb275-2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(cardesian)) {</span>
+<span id="cb275-3"><a href="行列の標準化と固有値.html#cb275-3"></a>  trans[i,]&lt;-A <span class="op">%*%</span><span class="st"> </span>P <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(<span class="kw">as.matrix</span>(cardesian[i,]))</span>
+<span id="cb275-4"><a href="行列の標準化と固有値.html#cb275-4"></a>}</span>
+<span id="cb275-5"><a href="行列の標準化と固有値.html#cb275-5"></a><span class="kw">bind_rows</span>(<span class="st">&quot;Original&quot;</span> =<span class="st"> </span>cardesian,</span>
+<span id="cb275-6"><a href="行列の標準化と固有値.html#cb275-6"></a>          <span class="st">&quot;Transformed&quot;</span> =<span class="st"> </span>trans,</span>
+<span id="cb275-7"><a href="行列の標準化と固有値.html#cb275-7"></a>          <span class="dt">.id =</span> <span class="st">&quot;type&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb275-8"><a href="行列の標準化と固有値.html#cb275-8"></a><span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb275-9"><a href="行列の標準化と固有値.html#cb275-9"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y,<span class="dt">color=</span>type)) <span class="op">+</span></span>
+<span id="cb275-10"><a href="行列の標準化と固有値.html#cb275-10"></a><span class="st">  </span><span class="kw">coord_fixed</span>() <span class="op">+</span></span>
+<span id="cb275-11"><a href="行列の標準化と固有値.html#cb275-11"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="行列の標準化と固有値.html#cb276-1"></a>trans &lt;-<span class="st"> </span>cardesian</span>
+<span id="cb276-2"><a href="行列の標準化と固有値.html#cb276-2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(cardesian)) {</span>
+<span id="cb276-3"><a href="行列の標準化と固有値.html#cb276-3"></a>  trans[i,] &lt;-<span class="st"> </span><span class="kw">solve</span>(P) <span class="op">%*%</span><span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span>P <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(<span class="kw">as.matrix</span>(cardesian[i,]))</span>
+<span id="cb276-4"><a href="行列の標準化と固有値.html#cb276-4"></a>}</span>
+<span id="cb276-5"><a href="行列の標準化と固有値.html#cb276-5"></a><span class="kw">bind_rows</span>(<span class="st">&quot;Original&quot;</span> =<span class="st"> </span>cardesian,</span>
+<span id="cb276-6"><a href="行列の標準化と固有値.html#cb276-6"></a>          <span class="st">&quot;Transformed&quot;</span> =<span class="st"> </span>trans,</span>
+<span id="cb276-7"><a href="行列の標準化と固有値.html#cb276-7"></a>          <span class="dt">.id =</span> <span class="st">&quot;type&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb276-8"><a href="行列の標準化と固有値.html#cb276-8"></a><span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb276-9"><a href="行列の標準化と固有値.html#cb276-9"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y,<span class="dt">color=</span>type)) <span class="op">+</span></span>
+<span id="cb276-10"><a href="行列の標準化と固有値.html#cb276-10"></a><span class="st">  </span><span class="kw">coord_fixed</span>() <span class="op">+</span></span>
+<span id="cb276-11"><a href="行列の標準化と固有値.html#cb276-11"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-68-2.png" width="672" /></p>
+</div>
+<div id="問題7.1" class="section level2">
+<h2><span class="header-section-number">7.3</span> 問題7.1</h2>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="行列の標準化と固有値.html#cb277-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">5</span>),<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb277-2"><a href="行列の標準化と固有値.html#cb277-2"></a><span class="kw">eigen</span>(A)</span></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1] 7 1
+## 
+## $vectors
+##            [,1]       [,2]
+## [1,] -0.4472136 -0.7071068
+## [2,] -0.8944272  0.7071068</code></pre>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="行列の標準化と固有値.html#cb279-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>),<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb279-2"><a href="行列の標準化と固有値.html#cb279-2"></a><span class="kw">eigen</span>(A)</span></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1] 4 4
+## 
+## $vectors
+##           [,1]      [,2]
+## [1,] 0.7071068 0.7071068
+## [2,] 0.7071068 0.7071068</code></pre>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="行列の標準化と固有値.html#cb281-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">0</span>),<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb281-2"><a href="行列の標準化と固有値.html#cb281-2"></a><span class="kw">eigen</span>(A)</span></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1] 1+1.414214i 1-1.414214i
+## 
+## $vectors
+##                       [,1]                  [,2]
+## [1,]  0.8660254+0.0000000i  0.8660254+0.0000000i
+## [2,] -0.2886751+0.4082483i -0.2886751-0.4082483i</code></pre>
+</div>
+<div id="問題7.2" class="section level2">
+<h2><span class="header-section-number">7.4</span> 問題7.2</h2>
+<p>一例として．</p>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="行列の標準化と固有値.html#cb283-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">3</span>),<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb283-2"><a href="行列の標準化と固有値.html#cb283-2"></a><span class="kw">eigen</span>(A)</span></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1] 5 4 3
+## 
+## $vectors
+##      [,1] [,2] [,3]
+## [1,]    1    0    0
+## [2,]    0    1    0
+## [3,]    0    0    1</code></pre>
+</div>
+<div id="問題7.3" class="section level2">
+<h2><span class="header-section-number">7.5</span> 問題7.3</h2>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="行列の標準化と固有値.html#cb285-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">5</span>),<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb285-2"><a href="行列の標準化と固有値.html#cb285-2"></a>P &lt;-<span class="st"> </span><span class="kw">eigen</span>(A)<span class="op">$</span>vectors</span>
+<span id="cb285-3"><a href="行列の標準化と固有値.html#cb285-3"></a><span class="kw">round</span>(<span class="kw">solve</span>(P) <span class="op">%*%</span><span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span>P, <span class="dt">digits =</span> <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    7    0
+## [2,]    0    1</code></pre>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="行列の標準化と固有値.html#cb287-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>),<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb287-2"><a href="行列の標準化と固有値.html#cb287-2"></a>P &lt;-<span class="st"> </span><span class="kw">eigen</span>(A)<span class="op">$</span>vectors</span>
+<span id="cb287-3"><a href="行列の標準化と固有値.html#cb287-3"></a><span class="kw">round</span>(<span class="kw">solve</span>(P) <span class="op">%*%</span><span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span>P, <span class="dt">digits =</span> <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##          [,1]      [,2]
+## [1,] 4.00e+00 -2.98e-08
+## [2,] 2.98e-08  4.00e+00</code></pre>
+</div>
+<div id="問題7.4" class="section level2">
+<h2><span class="header-section-number">7.6</span> 問題7.4</h2>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="行列の標準化と固有値.html#cb289-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">3</span>),<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb289-2"><a href="行列の標準化と固有値.html#cb289-2"></a><span class="kw">eigen</span>(A)</span></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1]  5  2 -1
+## 
+## $vectors
+##           [,1]       [,2]       [,3]
+## [1,] 0.3333333 -0.6666667 -0.6666667
+## [2,] 0.6666667 -0.3333333  0.6666667
+## [3,] 0.6666667  0.6666667 -0.3333333</code></pre>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="行列の標準化と固有値.html#cb291-1"></a>P &lt;-<span class="st"> </span><span class="kw">eigen</span>(A)<span class="op">$</span>vectors</span>
+<span id="cb291-2"><a href="行列の標準化と固有値.html#cb291-2"></a><span class="kw">round</span>(<span class="kw">solve</span>(P) <span class="op">%*%</span><span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span>P, <span class="dt">digits =</span> <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    5    0    0
+## [2,]    0    2    0
+## [3,]    0    0   -1</code></pre>
+</div>
+<div id="演習問題7" class="section level2">
+<h2><span class="header-section-number">7.7</span> 演習問題7</h2>
+<p>1</p>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="行列の標準化と固有値.html#cb293-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="op">-</span><span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>),<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb293-2"><a href="行列の標準化と固有値.html#cb293-2"></a><span class="kw">eigen</span>(A)</span></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1] 3 2 1
+## 
+## $vectors
+##               [,1]          [,2]          [,3]
+## [1,] -7.691851e-16  8.944272e-01  7.071068e-01
+## [2,]  7.071068e-01 -4.472136e-01 -1.942890e-16
+## [3,] -7.071068e-01  1.805948e-15 -7.071068e-01</code></pre>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="行列の標準化と固有値.html#cb295-1"></a>P &lt;-<span class="st"> </span><span class="kw">eigen</span>(A)<span class="op">$</span>vectors</span>
+<span id="cb295-2"><a href="行列の標準化と固有値.html#cb295-2"></a><span class="kw">round</span>(<span class="kw">solve</span>(P) <span class="op">%*%</span><span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span>P, <span class="dt">digits =</span> <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    3    0    0
+## [2,]    0    2    0
+## [3,]    0    0    1</code></pre>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="行列の標準化と固有値.html#cb297-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>),<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb297-2"><a href="行列の標準化と固有値.html#cb297-2"></a><span class="kw">eigen</span>(A)</span></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1]  3  2 -1
+## 
+## $vectors
+##              [,1]       [,2]       [,3]
+## [1,] 7.071068e-01  0.5773503 -0.4082483
+## [2,] 7.071068e-01 -0.5773503  0.4082483
+## [3,] 1.110223e-16  0.5773503  0.8164966</code></pre>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="行列の標準化と固有値.html#cb299-1"></a>P &lt;-<span class="st"> </span><span class="kw">eigen</span>(A)<span class="op">$</span>vectors</span>
+<span id="cb299-2"><a href="行列の標準化と固有値.html#cb299-2"></a><span class="kw">round</span>(<span class="kw">solve</span>(P) <span class="op">%*%</span><span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span>P, <span class="dt">digits =</span> <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    3    0    0
+## [2,]    0    2    0
+## [3,]    0    0   -1</code></pre>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="行列の標準化と固有値.html#cb301-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">0</span>),<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb301-2"><a href="行列の標準化と固有値.html#cb301-2"></a><span class="kw">eigen</span>(A)</span></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1] 1.000000e+00 1.000000e+00 1.332268e-15
+## 
+## $vectors
+##            [,1]       [,2]       [,3]
+## [1,]  0.8164897  0.8017837  0.6666667
+## [2,] -0.4111453 -0.5345225 -0.6666667
+## [3,]  0.4053445  0.2672612  0.3333333</code></pre>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="行列の標準化と固有値.html#cb303-1"></a>P &lt;-<span class="st"> </span><span class="kw">eigen</span>(A)<span class="op">$</span>vectors</span>
+<span id="cb303-2"><a href="行列の標準化と固有値.html#cb303-2"></a><span class="kw">round</span>(<span class="kw">solve</span>(P) <span class="op">%*%</span><span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span>P, <span class="dt">digits =</span> <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    0    0
+## [2,]    0    1    0
+## [3,]    0    0    0</code></pre>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="行列の標準化と固有値.html#cb305-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">5</span>,<span class="op">-</span><span class="dv">11</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">3</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">0</span>),<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb305-2"><a href="行列の標準化と固有値.html#cb305-2"></a><span class="kw">eigen</span>(A)</span></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1] 3e+00+0e+00i 1e+00+6e-08i 1e+00-6e-08i
+## 
+## $vectors
+##              [,1]          [,2]          [,3]
+## [1,] 0.4082483+0i  0.5345225+0i  0.5345225-0i
+## [2,] 0.4082483+0i -0.2672612+0i -0.2672612-0i
+## [3,] 0.8164966+0i  0.8017837+0i  0.8017837+0i</code></pre>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="行列の標準化と固有値.html#cb307-1"></a>P &lt;-<span class="st"> </span><span class="kw">eigen</span>(A)<span class="op">$</span>vectors</span>
+<span id="cb307-2"><a href="行列の標準化と固有値.html#cb307-2"></a><span class="kw">round</span>(<span class="kw">solve</span>(P) <span class="op">%*%</span><span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span>P, <span class="dt">digits =</span> <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##                 [,1]            [,2]            [,3]
+## [1,] 3e+00-0.00e+00i 0e+00-9.80e-09i 0e+00-9.80e-09i
+## [2,] 0e+00+4.47e-08i 1e+00+0.00e+00i 0e+00-1.49e-08i
+## [3,] 0e+00-1.49e-08i 0e+00+1.49e-08i 1e+00-0.00e+00i</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ベクトルの1次独立性と行列の階数.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown.pdf", "bookdown.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
