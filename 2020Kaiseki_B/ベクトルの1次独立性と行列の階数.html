@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>S 6 ベクトルの1次独立性と行列の階数" | 2020統計解析演習B資料</title>
+  <title>S 6 ベクトルの1次独立性と行列の階数 | 2020統計解析演習B資料</title>
   <meta name="description" content="KGsoc2020秋統計解析演習BのためのR分析資料" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="S 6 ベクトルの1次独立性と行列の階数" | 2020統計解析演習B資料" />
+  <meta property="og:title" content="S 6 ベクトルの1次独立性と行列の階数 | 2020統計解析演習B資料" />
   <meta property="og:type" content="book" />
   
   
@@ -16,14 +16,14 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="S 6 ベクトルの1次独立性と行列の階数" | 2020統計解析演習B資料" />
+  <meta name="twitter:title" content="S 6 ベクトルの1次独立性と行列の階数 | 2020統計解析演習B資料" />
   
   <meta name="twitter:description" content="KGsoc2020秋統計解析演習BのためのR分析資料" />
   
 
 
 
-<meta name="date" content="2020-09-15" />
+<meta name="date" content="2020-09-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -170,7 +170,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.7" data-path="連立一次方程式.html"><a href="連立一次方程式.html#問題5.4"><i class="fa fa-check"></i><b>5.7</b> 問題5.4</a></li>
 <li class="chapter" data-level="5.8" data-path="連立一次方程式.html"><a href="連立一次方程式.html#演習問題5"><i class="fa fa-check"></i><b>5.8</b> 演習問題5</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="ベクトルの1次独立性と行列の階数.html"><a href="ベクトルの1次独立性と行列の階数.html"><i class="fa fa-check"></i><b>6</b> ベクトルの1次独立性と行列の階数"</a><ul>
+<li class="chapter" data-level="6" data-path="ベクトルの1次独立性と行列の階数.html"><a href="ベクトルの1次独立性と行列の階数.html"><i class="fa fa-check"></i><b>6</b> ベクトルの1次独立性と行列の階数</a><ul>
 <li class="chapter" data-level="6.1" data-path="ベクトルの1次独立性と行列の階数.html"><a href="ベクトルの1次独立性と行列の階数.html#例題6.1"><i class="fa fa-check"></i><b>6.1</b> 例題6.1</a></li>
 <li class="chapter" data-level="6.2" data-path="ベクトルの1次独立性と行列の階数.html"><a href="ベクトルの1次独立性と行列の階数.html#問題6.2"><i class="fa fa-check"></i><b>6.2</b> 問題6.2</a></li>
 <li class="chapter" data-level="6.3" data-path="ベクトルの1次独立性と行列の階数.html"><a href="ベクトルの1次独立性と行列の階数.html#ランク"><i class="fa fa-check"></i><b>6.3</b> ランク</a></li>
@@ -207,30 +207,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="ベクトルの1次独立性と行列の階数" class="section level1">
-<h1><span class="header-section-number">S 6</span> ベクトルの1次独立性と行列の階数"</h1>
+<h1><span class="header-section-number">S 6</span> ベクトルの1次独立性と行列の階数</h1>
 <div id="例題6.1" class="section level2">
 <h2><span class="header-section-number">6.1</span> 例題6.1</h2>
 <p>対角要素が0になったら打ち止めになるように，hakidashi関数を改造．</p>
 <div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="ベクトルの1次独立性と行列の階数.html#cb207-1"></a>hakidashi2 &lt;-<span class="st"> </span><span class="cf">function</span>(Ab) {</span>
 <span id="cb207-2"><a href="ベクトルの1次独立性と行列の階数.html#cb207-2"></a>  d &lt;-<span class="st"> </span><span class="kw">dim</span>(Ab)[<span class="dv">1</span>]</span>
 <span id="cb207-3"><a href="ベクトルの1次独立性と行列の階数.html#cb207-3"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>d) {</span>
-<span id="cb207-4"><a href="ベクトルの1次独立性と行列の階数.html#cb207-4"></a>    <span class="cf">if</span> (Ab[i,i] <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) <span class="cf">break</span> <span class="co">## 対角要素が0になったら打ち止め</span></span>
-<span id="cb207-5"><a href="ベクトルの1次独立性と行列の階数.html#cb207-5"></a>    Ab[i,] &lt;-<span class="st"> </span>Ab[i,]<span class="op">/</span>Ab[i,i]</span>
-<span id="cb207-6"><a href="ベクトルの1次独立性と行列の階数.html#cb207-6"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="kw">setdiff</span>(<span class="dv">1</span><span class="op">:</span>d,i)) {</span>
-<span id="cb207-7"><a href="ベクトルの1次独立性と行列の階数.html#cb207-7"></a>      Ab[j,] &lt;-<span class="st"> </span>Ab[j,]<span class="op">-</span>Ab[i,]<span class="op">*</span>Ab[j,i]</span>
-<span id="cb207-8"><a href="ベクトルの1次独立性と行列の階数.html#cb207-8"></a>    }</span>
-<span id="cb207-9"><a href="ベクトルの1次独立性と行列の階数.html#cb207-9"></a>  }</span>
-<span id="cb207-10"><a href="ベクトルの1次独立性と行列の階数.html#cb207-10"></a>  <span class="kw">round</span>(Ab, <span class="dt">digits =</span> <span class="dv">5</span>)</span>
-<span id="cb207-11"><a href="ベクトルの1次独立性と行列の階数.html#cb207-11"></a>}</span>
-<span id="cb207-12"><a href="ベクトルの1次独立性と行列の階数.html#cb207-12"></a></span>
-<span id="cb207-13"><a href="ベクトルの1次独立性と行列の階数.html#cb207-13"></a>Ab &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">5</span>),<span class="dv">3</span>,<span class="dv">5</span>)</span>
-<span id="cb207-14"><a href="ベクトルの1次独立性と行列の階数.html#cb207-14"></a><span class="kw">hakidashi2</span>(Ab)</span></code></pre></div>
+<span id="cb207-4"><a href="ベクトルの1次独立性と行列の階数.html#cb207-4"></a>    <span class="cf">if</span> (<span class="kw">all</span>(Ab[i<span class="op">:</span>d,i] <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)) <span class="cf">break</span> <span class="co"># lesser rank</span></span>
+<span id="cb207-5"><a href="ベクトルの1次独立性と行列の階数.html#cb207-5"></a>    <span class="cf">if</span> (Ab[i,i] <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) { <span class="co"># pivoting</span></span>
+<span id="cb207-6"><a href="ベクトルの1次独立性と行列の階数.html#cb207-6"></a>      c &lt;-<span class="st"> </span><span class="kw">c</span>(i<span class="op">:</span>d)[Ab[i<span class="op">:</span>d,<span class="dv">1</span>] <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>][<span class="dv">1</span>]</span>
+<span id="cb207-7"><a href="ベクトルの1次独立性と行列の階数.html#cb207-7"></a>      temp &lt;-<span class="st"> </span>Ab[c,]</span>
+<span id="cb207-8"><a href="ベクトルの1次独立性と行列の階数.html#cb207-8"></a>      Ab[c,] &lt;-<span class="st"> </span>Ab[i,]</span>
+<span id="cb207-9"><a href="ベクトルの1次独立性と行列の階数.html#cb207-9"></a>      Ab[i,] &lt;-<span class="st"> </span>temp</span>
+<span id="cb207-10"><a href="ベクトルの1次独立性と行列の階数.html#cb207-10"></a>    }</span>
+<span id="cb207-11"><a href="ベクトルの1次独立性と行列の階数.html#cb207-11"></a>    Ab[i,] &lt;-<span class="st"> </span>Ab[i,]<span class="op">/</span>Ab[i,i]</span>
+<span id="cb207-12"><a href="ベクトルの1次独立性と行列の階数.html#cb207-12"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="kw">setdiff</span>(<span class="dv">1</span><span class="op">:</span>d,i)) {</span>
+<span id="cb207-13"><a href="ベクトルの1次独立性と行列の階数.html#cb207-13"></a>      Ab[j,] &lt;-<span class="st"> </span>Ab[j,]<span class="op">-</span>Ab[i,]<span class="op">*</span>Ab[j,i]</span>
+<span id="cb207-14"><a href="ベクトルの1次独立性と行列の階数.html#cb207-14"></a>    }</span>
+<span id="cb207-15"><a href="ベクトルの1次独立性と行列の階数.html#cb207-15"></a>  }</span>
+<span id="cb207-16"><a href="ベクトルの1次独立性と行列の階数.html#cb207-16"></a>  <span class="kw">round</span>(Ab, <span class="dt">digits =</span> <span class="dv">5</span>)</span>
+<span id="cb207-17"><a href="ベクトルの1次独立性と行列の階数.html#cb207-17"></a>}</span>
+<span id="cb207-18"><a href="ベクトルの1次独立性と行列の階数.html#cb207-18"></a></span>
+<span id="cb207-19"><a href="ベクトルの1次独立性と行列の階数.html#cb207-19"></a>Ab &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">3</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">11</span>,<span class="dv">9</span>,<span class="dv">2</span>),<span class="dv">3</span>,<span class="dv">4</span>)</span>
+<span id="cb207-20"><a href="ベクトルの1次独立性と行列の階数.html#cb207-20"></a><span class="kw">hakidashi2</span>(Ab)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    0    0    3
+## [2,]    0    1    0   -1
+## [3,]    0    0    1    2</code></pre>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="ベクトルの1次独立性と行列の階数.html#cb209-1"></a>Ab &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">5</span>),<span class="dv">3</span>,<span class="dv">5</span>)</span>
+<span id="cb209-2"><a href="ベクトルの1次独立性と行列の階数.html#cb209-2"></a><span class="kw">hakidashi2</span>(Ab)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
 ## [1,]    1    0  4.0   -1  2.0
 ## [2,]    0    1 -2.5    2 -0.5
 ## [3,]    0    0  0.0    0  0.0</code></pre>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="ベクトルの1次独立性と行列の階数.html#cb209-1"></a>Ab &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>),<span class="dv">3</span>,<span class="dv">5</span>)</span>
-<span id="cb209-2"><a href="ベクトルの1次独立性と行列の階数.html#cb209-2"></a><span class="kw">hakidashi2</span>(Ab)</span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="ベクトルの1次独立性と行列の階数.html#cb211-1"></a>Ab &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>),<span class="dv">3</span>,<span class="dv">5</span>)</span>
+<span id="cb211-2"><a href="ベクトルの1次独立性と行列の階数.html#cb211-2"></a><span class="kw">hakidashi2</span>(Ab)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
 ## [1,]    1    0  4.0   -1  2.0
 ## [2,]    0    1 -2.5    2 -0.5
@@ -238,79 +250,79 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="問題6.2" class="section level2">
 <h2><span class="header-section-number">6.2</span> 問題6.2</h2>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="ベクトルの1次独立性と行列の階数.html#cb211-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="dv">3</span>,<span class="dv">3</span>)</span>
-<span id="cb211-2"><a href="ベクトルの1次独立性と行列の階数.html#cb211-2"></a><span class="kw">det</span>(A)</span></code></pre></div>
-<pre><code>## [1] -1</code></pre>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="ベクトルの1次独立性と行列の階数.html#cb213-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">9</span>,<span class="op">-</span><span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">2</span>),<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="ベクトルの1次独立性と行列の階数.html#cb213-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="dv">3</span>,<span class="dv">3</span>)</span>
 <span id="cb213-2"><a href="ベクトルの1次独立性と行列の階数.html#cb213-2"></a><span class="kw">det</span>(A)</span></code></pre></div>
+<pre><code>## [1] -1</code></pre>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="ベクトルの1次独立性と行列の階数.html#cb215-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">9</span>,<span class="op">-</span><span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">2</span>),<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb215-2"><a href="ベクトルの1次独立性と行列の階数.html#cb215-2"></a><span class="kw">det</span>(A)</span></code></pre></div>
 <pre><code>## [1] -1.065814e-14</code></pre>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="ベクトルの1次独立性と行列の階数.html#cb215-1"></a><span class="kw">hakidashi2</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="ベクトルの1次独立性と行列の階数.html#cb217-1"></a><span class="kw">hakidashi2</span>(A)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    0    4
 ## [2,]    0    1   -2
 ## [3,]    0    0    0</code></pre>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="ベクトルの1次独立性と行列の階数.html#cb217-1"></a><span class="dv">4</span><span class="op">*</span>A[,<span class="dv">1</span>] <span class="dv">-2</span><span class="op">*</span>A[,<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="ベクトルの1次独立性と行列の階数.html#cb219-1"></a><span class="dv">4</span><span class="op">*</span>A[,<span class="dv">1</span>] <span class="dv">-2</span><span class="op">*</span>A[,<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## [1] -4  6  2</code></pre>
 </div>
 <div id="ランク" class="section level2">
 <h2><span class="header-section-number">6.3</span> ランク</h2>
 <p>定義通りにランクを計算する関数．要<code>gtools</code>．</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="ベクトルの1次独立性と行列の階数.html#cb219-1"></a><span class="kw">library</span>(gtools) <span class="co"># for combinations</span></span>
-<span id="cb219-2"><a href="ベクトルの1次独立性と行列の階数.html#cb219-2"></a>rank &lt;-<span class="st"> </span><span class="cf">function</span>(A) {</span>
-<span id="cb219-3"><a href="ベクトルの1次独立性と行列の階数.html#cb219-3"></a>  r_max &lt;-<span class="st"> </span><span class="kw">min</span>(<span class="kw">dim</span>(A))</span>
-<span id="cb219-4"><a href="ベクトルの1次独立性と行列の階数.html#cb219-4"></a>  <span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>r_max) {</span>
-<span id="cb219-5"><a href="ベクトルの1次独立性と行列の階数.html#cb219-5"></a>    r &lt;-<span class="st"> </span>r_max<span class="op">+</span><span class="dv">1</span><span class="op">-</span>k</span>
-<span id="cb219-6"><a href="ベクトルの1次独立性と行列の階数.html#cb219-6"></a>    row_combi &lt;-<span class="st"> </span><span class="kw">combinations</span>(<span class="kw">dim</span>(A)[<span class="dv">1</span>],r)</span>
-<span id="cb219-7"><a href="ベクトルの1次独立性と行列の階数.html#cb219-7"></a>    col_combi &lt;-<span class="st"> </span><span class="kw">combinations</span>(<span class="kw">dim</span>(A)[<span class="dv">2</span>],r)</span>
-<span id="cb219-8"><a href="ベクトルの1次独立性と行列の階数.html#cb219-8"></a>    dets &lt;-<span class="st"> </span><span class="kw">c</span>()</span>
-<span id="cb219-9"><a href="ベクトルの1次独立性と行列の階数.html#cb219-9"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(row_combi)) {</span>
-<span id="cb219-10"><a href="ベクトルの1次独立性と行列の階数.html#cb219-10"></a>      <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(col_combi)) {</span>
-<span id="cb219-11"><a href="ベクトルの1次独立性と行列の階数.html#cb219-11"></a>        det &lt;-<span class="st"> </span><span class="kw">det</span>(<span class="kw">as.matrix</span>(A[row_combi[i,],col_combi[j,]]))</span>
-<span id="cb219-12"><a href="ベクトルの1次独立性と行列の階数.html#cb219-12"></a>        dets &lt;-<span class="st"> </span><span class="kw">c</span>(dets, <span class="kw">round</span>(det, <span class="dt">digits =</span> <span class="dv">5</span>))</span>
-<span id="cb219-13"><a href="ベクトルの1次独立性と行列の階数.html#cb219-13"></a>      }</span>
-<span id="cb219-14"><a href="ベクトルの1次独立性と行列の階数.html#cb219-14"></a>    }</span>
-<span id="cb219-15"><a href="ベクトルの1次独立性と行列の階数.html#cb219-15"></a>    <span class="cf">if</span> (<span class="kw">sum</span>(<span class="kw">abs</span>(dets)) <span class="op">!=</span><span class="st"> </span><span class="dv">0</span> ) <span class="cf">break</span></span>
-<span id="cb219-16"><a href="ベクトルの1次独立性と行列の階数.html#cb219-16"></a>  }</span>
-<span id="cb219-17"><a href="ベクトルの1次独立性と行列の階数.html#cb219-17"></a>  r</span>
-<span id="cb219-18"><a href="ベクトルの1次独立性と行列の階数.html#cb219-18"></a>}</span>
-<span id="cb219-19"><a href="ベクトルの1次独立性と行列の階数.html#cb219-19"></a></span>
-<span id="cb219-20"><a href="ベクトルの1次独立性と行列の階数.html#cb219-20"></a>Ab &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">1</span>),<span class="dv">3</span>,<span class="dv">4</span>)</span>
-<span id="cb219-21"><a href="ベクトルの1次独立性と行列の階数.html#cb219-21"></a><span class="kw">rank</span>(Ab)</span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="ベクトルの1次独立性と行列の階数.html#cb221-1"></a><span class="kw">library</span>(gtools) <span class="co"># for combinations</span></span>
+<span id="cb221-2"><a href="ベクトルの1次独立性と行列の階数.html#cb221-2"></a>rank &lt;-<span class="st"> </span><span class="cf">function</span>(A) {</span>
+<span id="cb221-3"><a href="ベクトルの1次独立性と行列の階数.html#cb221-3"></a>  r_max &lt;-<span class="st"> </span><span class="kw">min</span>(<span class="kw">dim</span>(A))</span>
+<span id="cb221-4"><a href="ベクトルの1次独立性と行列の階数.html#cb221-4"></a>  <span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>r_max) {</span>
+<span id="cb221-5"><a href="ベクトルの1次独立性と行列の階数.html#cb221-5"></a>    r &lt;-<span class="st"> </span>r_max<span class="op">+</span><span class="dv">1</span><span class="op">-</span>k</span>
+<span id="cb221-6"><a href="ベクトルの1次独立性と行列の階数.html#cb221-6"></a>    row_combi &lt;-<span class="st"> </span><span class="kw">combinations</span>(<span class="kw">dim</span>(A)[<span class="dv">1</span>],r)</span>
+<span id="cb221-7"><a href="ベクトルの1次独立性と行列の階数.html#cb221-7"></a>    col_combi &lt;-<span class="st"> </span><span class="kw">combinations</span>(<span class="kw">dim</span>(A)[<span class="dv">2</span>],r)</span>
+<span id="cb221-8"><a href="ベクトルの1次独立性と行列の階数.html#cb221-8"></a>    dets &lt;-<span class="st"> </span><span class="kw">c</span>()</span>
+<span id="cb221-9"><a href="ベクトルの1次独立性と行列の階数.html#cb221-9"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(row_combi)) {</span>
+<span id="cb221-10"><a href="ベクトルの1次独立性と行列の階数.html#cb221-10"></a>      <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(col_combi)) {</span>
+<span id="cb221-11"><a href="ベクトルの1次独立性と行列の階数.html#cb221-11"></a>        det &lt;-<span class="st"> </span><span class="kw">det</span>(<span class="kw">as.matrix</span>(A[row_combi[i,],col_combi[j,]]))</span>
+<span id="cb221-12"><a href="ベクトルの1次独立性と行列の階数.html#cb221-12"></a>        dets &lt;-<span class="st"> </span><span class="kw">c</span>(dets, <span class="kw">round</span>(det, <span class="dt">digits =</span> <span class="dv">5</span>))</span>
+<span id="cb221-13"><a href="ベクトルの1次独立性と行列の階数.html#cb221-13"></a>      }</span>
+<span id="cb221-14"><a href="ベクトルの1次独立性と行列の階数.html#cb221-14"></a>    }</span>
+<span id="cb221-15"><a href="ベクトルの1次独立性と行列の階数.html#cb221-15"></a>    <span class="cf">if</span> (<span class="kw">any</span>(dets <span class="op">!=</span><span class="st"> </span><span class="dv">0</span> )) <span class="cf">break</span></span>
+<span id="cb221-16"><a href="ベクトルの1次独立性と行列の階数.html#cb221-16"></a>  }</span>
+<span id="cb221-17"><a href="ベクトルの1次独立性と行列の階数.html#cb221-17"></a>  r</span>
+<span id="cb221-18"><a href="ベクトルの1次独立性と行列の階数.html#cb221-18"></a>}</span>
+<span id="cb221-19"><a href="ベクトルの1次独立性と行列の階数.html#cb221-19"></a></span>
+<span id="cb221-20"><a href="ベクトルの1次独立性と行列の階数.html#cb221-20"></a>Ab &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">1</span>),<span class="dv">3</span>,<span class="dv">4</span>)</span>
+<span id="cb221-21"><a href="ベクトルの1次独立性と行列の階数.html#cb221-21"></a><span class="kw">rank</span>(Ab)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="ベクトルの1次独立性と行列の階数.html#cb221-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">9</span>,<span class="op">-</span><span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">2</span>),<span class="dv">3</span>,<span class="dv">3</span>)</span>
-<span id="cb221-2"><a href="ベクトルの1次独立性と行列の階数.html#cb221-2"></a><span class="kw">det</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="ベクトルの1次独立性と行列の階数.html#cb223-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">9</span>,<span class="op">-</span><span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">2</span>),<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb223-2"><a href="ベクトルの1次独立性と行列の階数.html#cb223-2"></a><span class="kw">det</span>(A)</span></code></pre></div>
 <pre><code>## [1] -1.065814e-14</code></pre>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="ベクトルの1次独立性と行列の階数.html#cb223-1"></a><span class="kw">rank</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="ベクトルの1次独立性と行列の階数.html#cb225-1"></a><span class="kw">rank</span>(A)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="ベクトルの1次独立性と行列の階数.html#cb225-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">2</span>),<span class="dv">2</span>,<span class="dv">2</span>)</span>
-<span id="cb225-2"><a href="ベクトルの1次独立性と行列の階数.html#cb225-2"></a><span class="kw">rank</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="ベクトルの1次独立性と行列の階数.html#cb227-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">2</span>),<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb227-2"><a href="ベクトルの1次独立性と行列の階数.html#cb227-2"></a><span class="kw">rank</span>(A)</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 </div>
 <div id="問題6.3" class="section level2">
 <h2><span class="header-section-number">6.4</span> 問題6.3</h2>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="ベクトルの1次独立性と行列の階数.html#cb227-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="op">-</span><span class="dv">3</span>,<span class="op">-</span><span class="dv">8</span>,<span class="op">-</span><span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">2</span>,<span class="op">-</span><span class="dv">4</span>,<span class="op">-</span><span class="dv">2</span>),<span class="dv">3</span>,<span class="dv">4</span>)</span>
-<span id="cb227-2"><a href="ベクトルの1次独立性と行列の階数.html#cb227-2"></a>b &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">9</span>,<span class="dv">6</span>),<span class="dv">3</span>,<span class="dv">1</span>)</span>
-<span id="cb227-3"><a href="ベクトルの1次独立性と行列の階数.html#cb227-3"></a>Ab &lt;-<span class="st"> </span><span class="kw">cbind</span>(A,b)</span>
-<span id="cb227-4"><a href="ベクトルの1次独立性と行列の階数.html#cb227-4"></a></span>
-<span id="cb227-5"><a href="ベクトルの1次独立性と行列の階数.html#cb227-5"></a><span class="kw">rank</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="ベクトルの1次独立性と行列の階数.html#cb229-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="op">-</span><span class="dv">3</span>,<span class="op">-</span><span class="dv">8</span>,<span class="op">-</span><span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">2</span>,<span class="op">-</span><span class="dv">4</span>,<span class="op">-</span><span class="dv">2</span>),<span class="dv">3</span>,<span class="dv">4</span>)</span>
+<span id="cb229-2"><a href="ベクトルの1次独立性と行列の階数.html#cb229-2"></a>b &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">9</span>,<span class="dv">6</span>),<span class="dv">3</span>,<span class="dv">1</span>)</span>
+<span id="cb229-3"><a href="ベクトルの1次独立性と行列の階数.html#cb229-3"></a>Ab &lt;-<span class="st"> </span><span class="kw">cbind</span>(A,b)</span>
+<span id="cb229-4"><a href="ベクトルの1次独立性と行列の階数.html#cb229-4"></a></span>
+<span id="cb229-5"><a href="ベクトルの1次独立性と行列の階数.html#cb229-5"></a><span class="kw">rank</span>(A)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="ベクトルの1次独立性と行列の階数.html#cb229-1"></a><span class="kw">rank</span>(Ab)</span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="ベクトルの1次独立性と行列の階数.html#cb231-1"></a><span class="kw">rank</span>(Ab)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="ベクトルの1次独立性と行列の階数.html#cb231-1"></a><span class="co"># solve(A,b) # error</span></span>
-<span id="cb231-2"><a href="ベクトルの1次独立性と行列の階数.html#cb231-2"></a><span class="kw">hakidashi2</span>(Ab)</span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="ベクトルの1次独立性と行列の階数.html#cb233-1"></a><span class="co"># solve(A,b) # error</span></span>
+<span id="cb233-2"><a href="ベクトルの1次独立性と行列の階数.html#cb233-2"></a><span class="kw">hakidashi2</span>(Ab)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
 ## [1,]    1    0   11   -4    5
 ## [2,]    0    1    6   -2    2
 ## [3,]    0    0    0    0    0</code></pre>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="ベクトルの1次独立性と行列の階数.html#cb233-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="op">-</span><span class="dv">3</span>,<span class="op">-</span><span class="dv">8</span>,<span class="op">-</span><span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">2</span>,<span class="op">-</span><span class="dv">4</span>,<span class="op">-</span><span class="dv">2</span>),<span class="dv">3</span>,<span class="dv">4</span>)</span>
-<span id="cb233-2"><a href="ベクトルの1次独立性と行列の階数.html#cb233-2"></a>b &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">9</span>,<span class="dv">3</span>),<span class="dv">3</span>,<span class="dv">1</span>)</span>
-<span id="cb233-3"><a href="ベクトルの1次独立性と行列の階数.html#cb233-3"></a>Ab &lt;-<span class="st"> </span><span class="kw">cbind</span>(A,b)</span>
-<span id="cb233-4"><a href="ベクトルの1次独立性と行列の階数.html#cb233-4"></a></span>
-<span id="cb233-5"><a href="ベクトルの1次独立性と行列の階数.html#cb233-5"></a><span class="kw">rank</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="ベクトルの1次独立性と行列の階数.html#cb235-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="op">-</span><span class="dv">3</span>,<span class="op">-</span><span class="dv">8</span>,<span class="op">-</span><span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">2</span>,<span class="op">-</span><span class="dv">4</span>,<span class="op">-</span><span class="dv">2</span>),<span class="dv">3</span>,<span class="dv">4</span>)</span>
+<span id="cb235-2"><a href="ベクトルの1次独立性と行列の階数.html#cb235-2"></a>b &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">9</span>,<span class="dv">3</span>),<span class="dv">3</span>,<span class="dv">1</span>)</span>
+<span id="cb235-3"><a href="ベクトルの1次独立性と行列の階数.html#cb235-3"></a>Ab &lt;-<span class="st"> </span><span class="kw">cbind</span>(A,b)</span>
+<span id="cb235-4"><a href="ベクトルの1次独立性と行列の階数.html#cb235-4"></a></span>
+<span id="cb235-5"><a href="ベクトルの1次独立性と行列の階数.html#cb235-5"></a><span class="kw">rank</span>(A)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="ベクトルの1次独立性と行列の階数.html#cb235-1"></a><span class="kw">rank</span>(Ab)</span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="ベクトルの1次独立性と行列の階数.html#cb237-1"></a><span class="kw">rank</span>(Ab)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="ベクトルの1次独立性と行列の階数.html#cb237-1"></a><span class="kw">hakidashi2</span>(Ab)</span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="ベクトルの1次独立性と行列の階数.html#cb239-1"></a><span class="kw">hakidashi2</span>(Ab)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
 ## [1,]    1    0   11   -4    5
 ## [2,]    0    1    6   -2    2
@@ -319,63 +331,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="演習問題6" class="section level2">
 <h2><span class="header-section-number">6.5</span> 演習問題6</h2>
 <p>1</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="ベクトルの1次独立性と行列の階数.html#cb239-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>),<span class="dv">3</span>,<span class="dv">4</span>)</span>
-<span id="cb239-2"><a href="ベクトルの1次独立性と行列の階数.html#cb239-2"></a><span class="kw">rank</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="ベクトルの1次独立性と行列の階数.html#cb241-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>),<span class="dv">3</span>,<span class="dv">4</span>)</span>
+<span id="cb241-2"><a href="ベクトルの1次独立性と行列の階数.html#cb241-2"></a><span class="kw">rank</span>(A)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="ベクトルの1次独立性と行列の階数.html#cb241-1"></a><span class="kw">hakidashi2</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="ベクトルの1次独立性と行列の階数.html#cb243-1"></a><span class="kw">hakidashi2</span>(A)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    0  5.5  1.5
 ## [2,]    0    1 -2.5  0.5
 ## [3,]    0    0  0.0  0.0</code></pre>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="ベクトルの1次独立性と行列の階数.html#cb243-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>),<span class="dv">3</span>,<span class="dv">5</span>)</span>
-<span id="cb243-2"><a href="ベクトルの1次独立性と行列の階数.html#cb243-2"></a><span class="kw">rank</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="ベクトルの1次独立性と行列の階数.html#cb245-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>),<span class="dv">3</span>,<span class="dv">5</span>)</span>
+<span id="cb245-2"><a href="ベクトルの1次独立性と行列の階数.html#cb245-2"></a><span class="kw">rank</span>(A)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="ベクトルの1次独立性と行列の階数.html#cb245-1"></a><span class="kw">hakidashi2</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="ベクトルの1次独立性と行列の階数.html#cb247-1"></a><span class="kw">hakidashi2</span>(A)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
 ## [1,]    1    0 -2.5    2  0.5
 ## [2,]    0    1  5.5   -3  0.5
 ## [3,]    0    0  0.0    1  0.0</code></pre>
 <p>2</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="ベクトルの1次独立性と行列の階数.html#cb247-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="op">-</span><span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">4</span>),<span class="dv">3</span>,<span class="dv">3</span>)</span>
-<span id="cb247-2"><a href="ベクトルの1次独立性と行列の階数.html#cb247-2"></a>b &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">14</span>),<span class="dv">3</span>,<span class="dv">1</span>)</span>
-<span id="cb247-3"><a href="ベクトルの1次独立性と行列の階数.html#cb247-3"></a>Ab &lt;-<span class="st"> </span><span class="kw">cbind</span>(A,b)</span>
-<span id="cb247-4"><a href="ベクトルの1次独立性と行列の階数.html#cb247-4"></a><span class="kw">solve</span>(A,b)</span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="ベクトルの1次独立性と行列の階数.html#cb249-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="op">-</span><span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">4</span>),<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb249-2"><a href="ベクトルの1次独立性と行列の階数.html#cb249-2"></a>b &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">14</span>),<span class="dv">3</span>,<span class="dv">1</span>)</span>
+<span id="cb249-3"><a href="ベクトルの1次独立性と行列の階数.html#cb249-3"></a>Ab &lt;-<span class="st"> </span><span class="kw">cbind</span>(A,b)</span>
+<span id="cb249-4"><a href="ベクトルの1次独立性と行列の階数.html#cb249-4"></a><span class="kw">solve</span>(A,b)</span></code></pre></div>
 <pre><code>##      [,1]
 ## [1,]  3.0
 ## [2,]  0.5
 ## [3,] -1.0</code></pre>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="ベクトルの1次独立性と行列の階数.html#cb249-1"></a><span class="kw">hakidashi2</span>(Ab)</span></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="ベクトルの1次独立性と行列の階数.html#cb251-1"></a><span class="kw">hakidashi2</span>(Ab)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    0    0  3.0
 ## [2,]    0    1    0  0.5
 ## [3,]    0    0    1 -1.0</code></pre>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="ベクトルの1次独立性と行列の階数.html#cb251-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>),<span class="dv">3</span>,<span class="dv">3</span>)</span>
-<span id="cb251-2"><a href="ベクトルの1次独立性と行列の階数.html#cb251-2"></a>b &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">10</span>),<span class="dv">3</span>,<span class="dv">1</span>)</span>
-<span id="cb251-3"><a href="ベクトルの1次独立性と行列の階数.html#cb251-3"></a>Ab &lt;-<span class="st"> </span><span class="kw">cbind</span>(A,b)</span>
-<span id="cb251-4"><a href="ベクトルの1次独立性と行列の階数.html#cb251-4"></a><span class="kw">solve</span>(A,b)</span></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="ベクトルの1次独立性と行列の階数.html#cb253-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>),<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb253-2"><a href="ベクトルの1次独立性と行列の階数.html#cb253-2"></a>b &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">10</span>),<span class="dv">3</span>,<span class="dv">1</span>)</span>
+<span id="cb253-3"><a href="ベクトルの1次独立性と行列の階数.html#cb253-3"></a>Ab &lt;-<span class="st"> </span><span class="kw">cbind</span>(A,b)</span>
+<span id="cb253-4"><a href="ベクトルの1次独立性と行列の階数.html#cb253-4"></a><span class="kw">solve</span>(A,b)</span></code></pre></div>
 <pre><code>##      [,1]
 ## [1,]    0
 ## [2,]    0
 ## [3,]    2</code></pre>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="ベクトルの1次独立性と行列の階数.html#cb253-1"></a><span class="kw">hakidashi2</span>(Ab)</span></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="ベクトルの1次独立性と行列の階数.html#cb255-1"></a><span class="kw">hakidashi2</span>(Ab)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    0    0    0
 ## [2,]    0    1    0    0
 ## [3,]    0    0    1    2</code></pre>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="ベクトルの1次独立性と行列の階数.html#cb255-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">4</span>),<span class="dv">3</span>,<span class="dv">3</span>)</span>
-<span id="cb255-2"><a href="ベクトルの1次独立性と行列の階数.html#cb255-2"></a>b &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">9</span>,<span class="dv">7</span>),<span class="dv">3</span>,<span class="dv">1</span>)</span>
-<span id="cb255-3"><a href="ベクトルの1次独立性と行列の階数.html#cb255-3"></a>Ab &lt;-<span class="st"> </span><span class="kw">cbind</span>(A,b)</span>
-<span id="cb255-4"><a href="ベクトルの1次独立性と行列の階数.html#cb255-4"></a><span class="co"># solve(A,b) # error</span></span>
-<span id="cb255-5"><a href="ベクトルの1次独立性と行列の階数.html#cb255-5"></a><span class="kw">hakidashi2</span>(Ab)</span></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="ベクトルの1次独立性と行列の階数.html#cb257-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">4</span>),<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb257-2"><a href="ベクトルの1次独立性と行列の階数.html#cb257-2"></a>b &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">9</span>,<span class="dv">7</span>),<span class="dv">3</span>,<span class="dv">1</span>)</span>
+<span id="cb257-3"><a href="ベクトルの1次独立性と行列の階数.html#cb257-3"></a>Ab &lt;-<span class="st"> </span><span class="kw">cbind</span>(A,b)</span>
+<span id="cb257-4"><a href="ベクトルの1次独立性と行列の階数.html#cb257-4"></a><span class="co"># solve(A,b) # error</span></span>
+<span id="cb257-5"><a href="ベクトルの1次独立性と行列の階数.html#cb257-5"></a><span class="kw">hakidashi2</span>(Ab)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    0    1    6
 ## [2,]    0    1    1   -1
 ## [3,]    0    0    0  -10</code></pre>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="ベクトルの1次独立性と行列の階数.html#cb257-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="op">-</span><span class="dv">4</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">11</span>,<span class="op">-</span><span class="dv">8</span>,<span class="op">-</span><span class="dv">5</span>,<span class="dv">13</span>,<span class="dv">5</span>,<span class="op">-</span><span class="dv">3</span>),<span class="dv">3</span>,<span class="dv">4</span>)</span>
-<span id="cb257-2"><a href="ベクトルの1次独立性と行列の階数.html#cb257-2"></a>b &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">4</span>),<span class="dv">3</span>,<span class="dv">1</span>)</span>
-<span id="cb257-3"><a href="ベクトルの1次独立性と行列の階数.html#cb257-3"></a>Ab &lt;-<span class="st"> </span><span class="kw">cbind</span>(A,b)</span>
-<span id="cb257-4"><a href="ベクトルの1次独立性と行列の階数.html#cb257-4"></a><span class="co"># solve(A,b) # error</span></span>
-<span id="cb257-5"><a href="ベクトルの1次独立性と行列の階数.html#cb257-5"></a><span class="kw">hakidashi2</span>(Ab)</span></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="ベクトルの1次独立性と行列の階数.html#cb259-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="op">-</span><span class="dv">4</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">11</span>,<span class="op">-</span><span class="dv">8</span>,<span class="op">-</span><span class="dv">5</span>,<span class="dv">13</span>,<span class="dv">5</span>,<span class="op">-</span><span class="dv">3</span>),<span class="dv">3</span>,<span class="dv">4</span>)</span>
+<span id="cb259-2"><a href="ベクトルの1次独立性と行列の階数.html#cb259-2"></a>b &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">4</span>),<span class="dv">3</span>,<span class="dv">1</span>)</span>
+<span id="cb259-3"><a href="ベクトルの1次独立性と行列の階数.html#cb259-3"></a>Ab &lt;-<span class="st"> </span><span class="kw">cbind</span>(A,b)</span>
+<span id="cb259-4"><a href="ベクトルの1次独立性と行列の階数.html#cb259-4"></a><span class="co"># solve(A,b) # error</span></span>
+<span id="cb259-5"><a href="ベクトルの1次独立性と行列の階数.html#cb259-5"></a><span class="kw">hakidashi2</span>(Ab)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
 ## [1,]    1    0   -3    1    2
 ## [2,]    0    1    2   -3   -1
